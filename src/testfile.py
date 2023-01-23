@@ -3,11 +3,12 @@ from num import NUM
 from sym import SYM
 
 help = """
-script.lua : an example script with help text and a test suite
+data.lua : an example csv reader script
 (c)2022, Tim Menzies <timm@ieee.org>, BSD-2
-USAGE:   script.lua  [OPTIONS] [-g ACTION]
+USAGE:   data.lua  [OPTIONS] [-g ACTION]
 OPTIONS:
   -d  --dump  on crash, dump stack = false
+  -f  --file  name of file         = ../etc/data/auto93.csv
   -g  --go    start-up action      = data
   -h  --help  show help            = false
   -s  --seed  random number seed   = 937162211
@@ -65,6 +66,7 @@ def getCliArgs():
     parser.add_argument("-g", "--go", type=str, default="data", required=False, help="start-up action")
     parser.add_argument("-h", "--help", action='store_true', help="show help")
     parser.add_argument("-s", "--seed", type=int, default=937162211, required=False, help="random number seed")
+    parser.add_argument("-f", "--file", type=str, default="../etc/data/auto93.csv", required=False, help="name of file")
     args = parser.parse_args()
 
 def printCLIvalues():
