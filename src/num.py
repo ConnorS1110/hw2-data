@@ -1,10 +1,13 @@
 class NUM:
-    def __init__(self):
+    def __init__(self, at = 0, txt = ""):
+        self.at = at
+        self.txt = txt
         self.n = 0
         self.mu = 0
         self.m2 = 0
         self.lo = float('inf')
         self.hi = float('-inf') # Replaced sys.maxsize
+        self.w = (self.txt.find("-$") and -1) or 1
 
     def add(self, n):
         # print("Inside Add", n)
