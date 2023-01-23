@@ -24,5 +24,5 @@ def main(the, funs):
     if (fails == 0): return 0
     else: return 1
 
-
-main(the, test.egs)
+if __name__ == "__main__":
+    main(the, test.egs)
