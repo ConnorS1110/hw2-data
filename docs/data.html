@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
 <meta name="generator" content="pdoc 0.10.0" />
-<title>src.row API documentation</title>
+<title>src.data API documentation</title>
 <meta name="description" content="" />
 <link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
 <link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
@@ -19,16 +19,44 @@
 <main>
 <article id="content">
 <header>
-<h1 class="title">Module <code>src.row</code></h1>
+<h1 class="title">Module <code>src.data</code></h1>
 </header>
 <section id="section-intro">
 <details class="source">
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">class ROW:
-    def __init__(self, t):
-        self.cells = t</code></pre>
+<pre><code class="python">import testfile as test
+from row import ROW
+from cols import COLS
+
+class DATA:
+    def __init__(self, src, x):
+        self.rows = []
+        self.cols = None
+        fun = self.add(x)
+        if type(src) == &#34;str&#34;:
+            test.csv(src, fun)
+        else:
+            map(src or {}, fun)
+
+    def add(self, t):
+        if self.cols:
+            t = t.cells and t or ROW(t)
+            self.rows.append(t)
+            self.cols.add(t)
+        else:
+            self.cols = COLS(t)
+
+    def clone(self, init, x):
+        data = DATA({self.cols.names})
+        map(init or {}, data.add(x))
+        return data
+
+    def stats(self, what, cols, nPlaces):
+        def fun(k, col):
+            return col
+        return test.kap(cols or self.cols.y, fun)</code></pre>
 </details>
 </section>
 <section>
@@ -40,9 +68,9 @@
 <section>
 <h2 class="section-title" id="header-classes">Classes</h2>
 <dl>
-<dt id="src.row.ROW"><code class="flex name class">
-<span>class <span class="ident">ROW</span></span>
-<span>(</span><span>t)</span>
+<dt id="src.data.DATA"><code class="flex name class">
+<span>class <span class="ident">DATA</span></span>
+<span>(</span><span>src, x)</span>
 </code></dt>
 <dd>
 <div class="desc"></div>
@@ -50,10 +78,85 @@
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">class ROW:
-    def __init__(self, t):
-        self.cells = t</code></pre>
+<pre><code class="python">class DATA:
+    def __init__(self, src, x):
+        self.rows = []
+        self.cols = None
+        fun = self.add(x)
+        if type(src) == &#34;str&#34;:
+            test.csv(src, fun)
+        else:
+            map(src or {}, fun)
+
+    def add(self, t):
+        if self.cols:
+            t = t.cells and t or ROW(t)
+            self.rows.append(t)
+            self.cols.add(t)
+        else:
+            self.cols = COLS(t)
+
+    def clone(self, init, x):
+        data = DATA({self.cols.names})
+        map(init or {}, data.add(x))
+        return data
+
+    def stats(self, what, cols, nPlaces):
+        def fun(k, col):
+            return col
+        return test.kap(cols or self.cols.y, fun)</code></pre>
 </details>
+<h3>Methods</h3>
+<dl>
+<dt id="src.data.DATA.add"><code class="name flex">
+<span>def <span class="ident">add</span></span>(<span>self, t)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def add(self, t):
+    if self.cols:
+        t = t.cells and t or ROW(t)
+        self.rows.append(t)
+        self.cols.add(t)
+    else:
+        self.cols = COLS(t)</code></pre>
+</details>
+</dd>
+<dt id="src.data.DATA.clone"><code class="name flex">
+<span>def <span class="ident">clone</span></span>(<span>self, init, x)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def clone(self, init, x):
+    data = DATA({self.cols.names})
+    map(init or {}, data.add(x))
+    return data</code></pre>
+</details>
+</dd>
+<dt id="src.data.DATA.stats"><code class="name flex">
+<span>def <span class="ident">stats</span></span>(<span>self, what, cols, nPlaces)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def stats(self, what, cols, nPlaces):
+    def fun(k, col):
+        return col
+    return test.kap(cols or self.cols.y, fun)</code></pre>
+</details>
+</dd>
+</dl>
 </dd>
 </dl>
 </section>
@@ -72,7 +175,12 @@
 <li><h3><a href="#header-classes">Classes</a></h3>
 <ul>
 <li>
-<h4><code><a title="src.row.ROW" href="#src.row.ROW">ROW</a></code></h4>
+<h4><code><a title="src.data.DATA" href="#src.data.DATA">DATA</a></code></h4>
+<ul class="">
+<li><code><a title="src.data.DATA.add" href="#src.data.DATA.add">add</a></code></li>
+<li><code><a title="src.data.DATA.clone" href="#src.data.DATA.clone">clone</a></code></li>
+<li><code><a title="src.data.DATA.stats" href="#src.data.DATA.stats">stats</a></code></li>
+</ul>
 </li>
 </ul>
 </li>
