@@ -1,6 +1,9 @@
 import argparse
+import csv
+import os
 from num import NUM
 from sym import SYM
+from data import DATA
 
 help = """
 data.lua : an example csv reader script
@@ -18,6 +21,7 @@ ACTIONS:
 args = None
 Seed = 937162211
 egs = {}
+n = 0
 
 def eg(key, string, fun):
     global egs
@@ -59,6 +63,10 @@ def numFunc():
         num.add(element)
     return 11/7 == num.mid() and 0.787 == round(num.div(), ndigits=3)
 
+def crashFunc():
+    num = NUM()
+    return not hasattr(num, 'some.missing.nested.field')
+
 def getCliArgs():
     global args
     parser = argparse.ArgumentParser(add_help=False)
@@ -76,3 +84,17 @@ def printCLIvalues():
     cli_args["help"] = args.help
     cli_args["seed"] = args.seed
     print(cli_args)
+
+def csvFunc():
+    global n
+    script_dir = os.path.dirname(__file__)
+    full_path = os.path.join(script_dir, args.file)
+    readCSV(full_path)
+    return n == 8 * 399
+
+def readCSV(sFilename):
+    global n
+    with open(sFilename, mode='r') as file:
+        csvFile = csv.reader(file)
+        for line in csvFile:
+            n += len(line)

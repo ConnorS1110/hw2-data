@@ -27,5 +27,7 @@ class DATA:
 
     def stats(self, what, cols, nPlaces):
         def fun(k, col):
-            return col
+            mid = getattr(col, "mid")
+            rounded = round(mid(), nPlaces)
+            return (rounded, col.txt)
         return test.kap(cols or self.cols.y, fun)
