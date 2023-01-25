@@ -1,5 +1,6 @@
 import testfile as test
 from testfile import getCliArgs, printCLIvalues
+import utility
 
 the = {}
 
@@ -10,12 +11,12 @@ def main(the, funs):
     """Docstring for main function"""
     fails = 0
     getCliArgs()
-    if (test.args.help):
-        print(test.help)
+    if (utility.args.help):
+        print(utility.help)
     else:
         for what, fun in funs.items():
-            if test.args.go == "all" or what == test.args.go:
-                Seed = test.args.seed
+            if utility.args.go == "all" or what == utility.args.go:
+                Seed = utility.args.seed
                 if funs[what]() == False:
                     fails += 1
                     print("❌ fail:",what)
@@ -25,4 +26,4 @@ def main(the, funs):
     else: return 1
 
 if __name__ == "__main__":
-    main(the, test.egs)
+    main(the, utility.egs)
