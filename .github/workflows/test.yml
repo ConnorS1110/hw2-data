@@ -40,3 +40,19 @@ jobs:
            git fetch origin main
            git push origin HEAD:main
         fi
+    - name: Check if gh-pages branch exist
+      run: |
+        git branch | grep gh-pages || git checkout -b gh-pages
+    - name: Copy docs to gh-pages
+      run: |
+        cp -r ${{ github.workspace }}/docs/* ${{ github.workspace }}
+    - name: Commit to gh-pages
+      run: |
+        git add .
+        git commit -m "Update pages documentation"
+    - name: Push to gh-pages
+      run: |
+        git push origin gh-pages
+    - name: Set gh-pages as source for GitHub Pages
+      run: |
+        curl -X PATCH -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" https://api.github.com/repos/ConnorS1110/hw2-data -d '{"name":"hw2-data","default_branch":"gh-pages"}'
