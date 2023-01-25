@@ -28,6 +28,7 @@
 </summary>
 <pre><code class="python">import testfile as test
 from testfile import getCliArgs, printCLIvalues
+import utility
 
 the = {}
 
@@ -38,12 +39,12 @@ def main(the, funs):
     &#34;&#34;&#34;Docstring for main function&#34;&#34;&#34;
     fails = 0
     getCliArgs()
-    if (test.args.help):
-        print(test.help)
+    if (utility.args.help):
+        print(utility.help)
     else:
         for what, fun in funs.items():
-            if test.args.go == &#34;all&#34; or what == test.args.go:
-                Seed = test.args.seed
+            if utility.args.go == &#34;all&#34; or what == utility.args.go:
+                Seed = utility.args.seed
                 if funs[what]() == False:
                     fails += 1
                     print(&#34;❌ fail:&#34;,what)
@@ -53,7 +54,7 @@ def main(the, funs):
     else: return 1
 
 if __name__ == &#34;__main__&#34;:
-    main(the, test.egs)</code></pre>
+    main(the, utility.egs)</code></pre>
 </details>
 </section>
 <section>
@@ -76,12 +77,12 @@ if __name__ == &#34;__main__&#34;:
     &#34;&#34;&#34;Docstring for main function&#34;&#34;&#34;
     fails = 0
     getCliArgs()
-    if (test.args.help):
-        print(test.help)
+    if (utility.args.help):
+        print(utility.help)
     else:
         for what, fun in funs.items():
-            if test.args.go == &#34;all&#34; or what == test.args.go:
-                Seed = test.args.seed
+            if utility.args.go == &#34;all&#34; or what == utility.args.go:
+                Seed = utility.args.seed
                 if funs[what]() == False:
                     fails += 1
                     print(&#34;❌ fail:&#34;,what)
