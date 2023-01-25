@@ -27,8 +27,11 @@
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">import argparse
+import csv
+import os
 from num import NUM
 from sym import SYM
+from data import DATA
 
 help = &#34;&#34;&#34;
 data.lua : an example csv reader script
@@ -46,6 +49,7 @@ ACTIONS:
 args = None
 Seed = 937162211
 egs = {}
+n = 0
 
 def eg(key, string, fun):
     global egs
@@ -87,6 +91,10 @@ def numFunc():
         num.add(element)
     return 11/7 == num.mid() and 0.787 == round(num.div(), ndigits=3)
 
+def crashFunc():
+    num = NUM()
+    return not hasattr(num, &#39;some.missing.nested.field&#39;)
+
 def getCliArgs():
     global args
     parser = argparse.ArgumentParser(add_help=False)
@@ -103,7 +111,21 @@ def printCLIvalues():
     cli_args[&#34;go&#34;] = args.go
     cli_args[&#34;help&#34;] = args.help
     cli_args[&#34;seed&#34;] = args.seed
-    print(cli_args)</code></pre>
+    print(cli_args)
+
+def csvFunc():
+    global n
+    script_dir = os.path.dirname(__file__)
+    full_path = os.path.join(script_dir, args.file)
+    readCSV(full_path)
+    return n == 8 * 399
+
+def readCSV(sFilename):
+    global n
+    with open(sFilename, mode=&#39;r&#39;) as file:
+        csvFile = csv.reader(file)
+        for line in csvFile:
+            n += len(line)</code></pre>
 </details>
 </section>
 <section>
@@ -113,6 +135,37 @@ def printCLIvalues():
 <section>
 <h2 class="section-title" id="header-functions">Functions</h2>
 <dl>
+<dt id="src.utility.crashFunc"><code class="name flex">
+<span>def <span class="ident">crashFunc</span></span>(<span>)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def crashFunc():
+    num = NUM()
+    return not hasattr(num, &#39;some.missing.nested.field&#39;)</code></pre>
+</details>
+</dd>
+<dt id="src.utility.csvFunc"><code class="name flex">
+<span>def <span class="ident">csvFunc</span></span>(<span>)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def csvFunc():
+    global n
+    script_dir = os.path.dirname(__file__)
+    full_path = os.path.join(script_dir, args.file)
+    readCSV(full_path)
+    return n == 8 * 399</code></pre>
+</details>
+</dd>
 <dt id="src.utility.eg"><code class="name flex">
 <span>def <span class="ident">eg</span></span>(<span>key, string, fun)</span>
 </code></dt>
@@ -235,6 +288,23 @@ def printCLIvalues():
     return m1 == m2 and 0.5 == round(m1, 1)</code></pre>
 </details>
 </dd>
+<dt id="src.utility.readCSV"><code class="name flex">
+<span>def <span class="ident">readCSV</span></span>(<span>sFilename)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def readCSV(sFilename):
+    global n
+    with open(sFilename, mode=&#39;r&#39;) as file:
+        csvFile = csv.reader(file)
+        for line in csvFile:
+            n += len(line)</code></pre>
+</details>
+</dd>
 <dt id="src.utility.symFunc"><code class="name flex">
 <span>def <span class="ident">symFunc</span></span>(<span>)</span>
 </code></dt>
@@ -269,6 +339,8 @@ def printCLIvalues():
 </li>
 <li><h3><a href="#header-functions">Functions</a></h3>
 <ul class="two-column">
+<li><code><a title="src.utility.crashFunc" href="#src.utility.crashFunc">crashFunc</a></code></li>
+<li><code><a title="src.utility.csvFunc" href="#src.utility.csvFunc">csvFunc</a></code></li>
 <li><code><a title="src.utility.eg" href="#src.utility.eg">eg</a></code></li>
 <li><code><a title="src.utility.getCliArgs" href="#src.utility.getCliArgs">getCliArgs</a></code></li>
 <li><code><a title="src.utility.numFunc" href="#src.utility.numFunc">numFunc</a></code></li>
@@ -276,6 +348,7 @@ def printCLIvalues():
 <li><code><a title="src.utility.printCLIvalues" href="#src.utility.printCLIvalues">printCLIvalues</a></code></li>
 <li><code><a title="src.utility.rand" href="#src.utility.rand">rand</a></code></li>
 <li><code><a title="src.utility.randFunc" href="#src.utility.randFunc">randFunc</a></code></li>
+<li><code><a title="src.utility.readCSV" href="#src.utility.readCSV">readCSV</a></code></li>
 <li><code><a title="src.utility.symFunc" href="#src.utility.symFunc">symFunc</a></code></li>
 </ul>
 </li>
