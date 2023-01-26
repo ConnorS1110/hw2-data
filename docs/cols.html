@@ -30,36 +30,6 @@
 from sym import SYM
 import re
 
-# class COLS:
-#     def __init__(self, t):
-#         self.names = t
-#         self.all = []
-#         self.x = []
-#         self.y = []
-#         self.klass = []
-#         for n, s in enumerate(t):
-#             if re.match(r&#34;^[A-Z]+&#34;, s):
-#                 col = NUM(n, s)
-#             else:
-#                 col = SYM(n, s)
-#             self.all.append(col)
-#             if not re.search(r&#34;X$&#34;, s):
-#                 if re.search(r&#34;!$&#34;, s):
-#                     self.klass = col
-#                 if re.search(r&#34;[!+-]$&#34;, s):
-#                     self.y.append(col)
-#                 else:
-#                     self.x.append(col)
-
-
-
-#     def add(self, row):
-#         print(row.cells)
-#         print(self.x, self.y)
-#         for _, t in enumerate({self.x, self.y}):
-#             for _, col in enumerate(t):
-#                 col.append(row.cells[col.at])
-
 class COLS:
     def __init__(self, t):
         self.names, self.all, self.x, self.y, self.klass = t, [], [], [], []
