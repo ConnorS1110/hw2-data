@@ -44,7 +44,7 @@ def eg(key, string, fun):
 def oo():
     pass
 
-def kap(listOfCols, fun): # t is
+def kap(listOfCols, fun):
     """
     Function:
         kap
@@ -233,7 +233,7 @@ def dataFunc():
     Input:
         None
     Output:
-        DATA instance is successfully created and has correct property values when reading the default CSV file at etc/data/auto93.csv
+        DATA instance is created and has correct property values when reading the default CSV file at etc/data/auto93.csv
     """
     script_dir = os.path.dirname(__file__)
     full_path = os.path.join(script_dir, args.file)

@@ -24,7 +24,7 @@ class COLS:
         Function:
             add
         Description:
-            adds row data to columns
+            adds row data to respective columns
         Input:
             self - current COLS instance
             row - row data to add for each column

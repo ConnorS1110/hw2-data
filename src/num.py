@@ -21,7 +21,6 @@ class NUM:
         Output:
             None
         """
-        # print("Inside Add", n)
         if n != "?": # Why Question mark
             self.n += 1
             n = float(n)
@@ -30,7 +29,6 @@ class NUM:
             self.m2 += d * (n - self.mu)
             self.lo = min(n, self.lo)
             self.hi = max(n, self.hi)
-        # print(self.n, d, self.mu, self.m2, self.lo, self.hi)
 
     def mid(self):
         """
@@ -45,7 +43,7 @@ class NUM:
         """
         return self.mu
 
-    def div(self): # Removed x
+    def div(self):
         """
         Function:
             div

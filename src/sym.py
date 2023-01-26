@@ -41,7 +41,7 @@ class SYM:
         """
         return self.mode
 
-    def div(self):  # Removed all parameters
+    def div(self):
         """
         Function:
             div
@@ -53,16 +53,6 @@ class SYM:
             Diversity around the center
         """
         def fun(p):
-            """
-            Function:
-                fun
-            Description:
-                Aids in calculation to determine diversity
-            Input:
-                p - current value of self.has divided by self.n
-            Output:
-                p multiplied by log base 2 of p
-            """
             return p * math.log(p, 2)
 
         e = 0
