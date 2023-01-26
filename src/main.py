@@ -8,7 +8,7 @@ the = {}
 # Seed = 937162211
 
 def main(the, funs):
-    """Docstring for main function"""
+    """Docstring for main function updated"""
     fails = 0
     getCliArgs()
     if (utility.args.help):
