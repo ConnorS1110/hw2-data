@@ -118,6 +118,7 @@ def printCLIvalues():
     cli_args[&#34;go&#34;] = args.go
     cli_args[&#34;help&#34;] = args.help
     cli_args[&#34;seed&#34;] = args.seed
+    cli_args[&#34;file&#34;] = args.file
     print(cli_args)
 
 def csvFunc():
@@ -153,8 +154,15 @@ def statsFunc():
     full_path = os.path.join(script_dir, args.file)
     data = DATA(full_path)
     for k, cols in {&#39;y&#39;: data.cols.y, &#39;x&#39;: data.cols.x}.items():
-        print(k, &#34;mid&#34;, (data.stats(&#34;mid&#34;, cols, 2)))
-        print(&#34;&#34;, &#34;div&#34;, (data.stats(&#34;div&#34;, cols, 2)))</code></pre>
+        print(k, &#34;\tmid&#34;, (data.stats(&#34;mid&#34;, cols, 2)))
+        print(&#34;&#34;, &#34;\tdiv&#34;, (data.stats(&#34;div&#34;, cols, 2)))
+
+def kap(listOfCols, fun): # t is 
+    u = {}
+    for k, v in enumerate(listOfCols):
+        v, k = fun(v)
+        u[k or len(u)+1] = v
+    return u</code></pre>
 </details>
 </section>
 <section>
@@ -255,7 +263,7 @@ def statsFunc():
 </details>
 </dd>
 <dt id="src.utility.kap"><code class="name flex">
-<span>def <span class="ident">kap</span></span>(<span>t, fun)</span>
+<span>def <span class="ident">kap</span></span>(<span>listOfCols, fun)</span>
 </code></dt>
 <dd>
 <div class="desc"></div>
@@ -263,10 +271,10 @@ def statsFunc():
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def kap(t, fun):
+<pre><code class="python">def kap(listOfCols, fun): # t is 
     u = {}
-    for k, v in t.items():
-        v, k = fun(k, v)
+    for k, v in enumerate(listOfCols):
+        v, k = fun(v)
         u[k or len(u)+1] = v
     return u</code></pre>
 </details>
@@ -315,6 +323,7 @@ def statsFunc():
     cli_args[&#34;go&#34;] = args.go
     cli_args[&#34;help&#34;] = args.help
     cli_args[&#34;seed&#34;] = args.seed
+    cli_args[&#34;file&#34;] = args.file
     print(cli_args)</code></pre>
 </details>
 </dd>
@@ -389,8 +398,8 @@ def statsFunc():
     full_path = os.path.join(script_dir, args.file)
     data = DATA(full_path)
     for k, cols in {&#39;y&#39;: data.cols.y, &#39;x&#39;: data.cols.x}.items():
-        print(k, &#34;mid&#34;, (data.stats(&#34;mid&#34;, cols, 2)))
-        print(&#34;&#34;, &#34;div&#34;, (data.stats(&#34;div&#34;, cols, 2)))</code></pre>
+        print(k, &#34;\tmid&#34;, (data.stats(&#34;mid&#34;, cols, 2)))
+        print(&#34;&#34;, &#34;\tdiv&#34;, (data.stats(&#34;div&#34;, cols, 2)))</code></pre>
 </details>
 </dd>
 <dt id="src.utility.symFunc"><code class="name flex">
