@@ -1,13 +1,10 @@
-import testfile as test
 from testfile import getCliArgs, printCLIvalues
 import utility
-
-the = {}
 
 # args = None
 # Seed = 937162211
 
-def main(the, funs):
+def main(funs):
     """
     Function:
         main
@@ -24,9 +21,8 @@ def main(the, funs):
     if (utility.args.help):
         print(utility.help)
     else:
-        for what, fun in funs.items():
+        for what, _ in funs.items():
             if utility.args.go == "all" or what == utility.args.go:
-                Seed = utility.args.seed
                 if funs[what]() == False:
                     fails += 1
                     print("❌ fail:",what)
@@ -36,4 +32,4 @@ def main(the, funs):
     else: return 1
 
 if __name__ == "__main__":
-    main(the, utility.egs)
+    main(utility.egs)

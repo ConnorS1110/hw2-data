@@ -44,10 +44,21 @@ def eg(key, string, fun):
 def oo():
     pass
 
-def kap(t, fun):
+def kap(listOfCols, fun): # t is
+    """
+    Function:
+        kap
+    Description:
+        Creates map that stores functions as value
+    Input:
+        listOfCols - list of columns
+        fun - anonymous function to be used as value in map
+    Output:
+        u - map of anonymous functions
+    """
     u = {}
-    for k, v in t.items():
-        v, k = fun(k, v)
+    for k, v in enumerate(listOfCols):
+        v, k = fun(v)
         u[k or len(u)+1] = v
     return u
 
@@ -124,6 +135,16 @@ def numFunc():
     return 11/7 == num.mid() and 0.787 == round(num.div(), ndigits=3)
 
 def crashFunc():
+    """
+    Function:
+        crashFunc
+    Description:
+        Callback function to test crashes
+    Input:
+        None
+    Output:
+        an instance of NUM doesn't have the property 'some.missing.nested.field'
+    """
     num = NUM()
     return not hasattr(num, 'some.missing.nested.field')
 
@@ -167,6 +188,16 @@ def printCLIvalues():
     print(cli_args)
 
 def csvFunc():
+    """
+    Function:
+        csvFunc
+    Description:
+        Callback function to test readCSV() function
+    Input:
+        None
+    Output:
+        there are 8 * 399 elements in the default csv file in etc/data/auto93.csv
+    """
     global n
     def fun(t):
         global n
@@ -177,14 +208,33 @@ def csvFunc():
     return n == 8 * 399
 
 def readCSV(sFilename, fun):
-    n = 0
+    """
+    Function:
+        readCSV
+    Description:
+        reads a CSV and runs a callback function on every line
+    Input:
+        sFilename - path of CSV file to be read
+        fun - callback function to be called for each line in the CSV
+    Output:
+        None
+    """
     with open(sFilename, mode='r') as file:
         csvFile = csv.reader(file)
         for line in csvFile:
-            n += len(line)
             fun(line)
 
 def dataFunc():
+    """
+    Function:
+        dataFunc
+    Description:
+        Callback function to test DATA class
+    Input:
+        None
+    Output:
+        DATA instance is successfully created and has correct property values when reading the default CSV file at etc/data/auto93.csv
+    """
     script_dir = os.path.dirname(__file__)
     full_path = os.path.join(script_dir, args.file)
     data = DATA(full_path)
@@ -195,16 +245,19 @@ def dataFunc():
     )
 
 def statsFunc():
+    """
+    Function:
+        statsFunc
+    Description:
+        Callback function to test stats function in DATA class
+    Input:
+        None
+    Output:
+        the statistics for the DATA instance using the default file at etc/data/auto93.csv are printed to the console
+    """
     script_dir = os.path.dirname(__file__)
     full_path = os.path.join(script_dir, args.file)
     data = DATA(full_path)
     for k, cols in {'y': data.cols.y, 'x': data.cols.x}.items():
         print(k, "\tmid", (data.stats("mid", cols, 2)))
         print("", "\tdiv", (data.stats("div", cols, 2)))
-
-def kap(listOfCols, fun): # t is 
-    u = {}
-    for k, v in enumerate(listOfCols):
-        v, k = fun(v)
-        u[k or len(u)+1] = v
-    return u

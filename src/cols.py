@@ -20,6 +20,17 @@ class COLS:
                     self.x.append(col)
 
     def add(self, row):
+        """
+        Function:
+            add
+        Description:
+            adds row data to columns
+        Input:
+            self - current COLS instance
+            row - row data to add for each column
+        Output:
+            None
+        """
         for t in [self.x, self.y]:
             for col in t:
                 col.add(row.cells[col.at])
