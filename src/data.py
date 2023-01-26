@@ -4,15 +4,10 @@ from cols import COLS
 
 class DATA:
     def __init__(self, src):
-        print(type(src))
         self.rows = []
         self.cols = None
-        # fun = self.add(x)
-        print("Inside DATA Cons ", src)
         fun = lambda x: self.add(x)
-        print("Executed fun")
         if type(src) == str:
-            print("Inside str condition")
             test.readCSV(src, fun)
         else:
             map(src or {}, fun)
