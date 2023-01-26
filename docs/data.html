@@ -30,13 +30,6 @@
 from row import ROW
 from cols import COLS
 
-def kap(t, fun):
-    u ={}
-    for v in t:
-        v, k = fun(v)
-        u[k or len(u) + 1] = v
-    return u
-
 class DATA:
     def __init__(self, src):
         self.rows = []
@@ -48,6 +41,17 @@ class DATA:
             map(src or {}, fun)
 
     def add(self, t):
+        &#34;&#34;&#34;
+        Function:
+            add
+        Description:
+            Adds the data to rows and cols, or makes a COLS if there aren&#39;t any columns stored yet
+        Input:
+            self - current DATA instance
+            t - data to be added
+        Output:
+            None
+        &#34;&#34;&#34;
         if self.cols:
             t = t.cells if hasattr(t, &#34;cells&#34;) else ROW(t)
             self.rows.append(t)
@@ -56,16 +60,41 @@ class DATA:
             self.cols = COLS(t)
 
     def clone(self, init, x):
+        &#34;&#34;&#34;
+        Function:
+            clone
+        Description:
+            Creates a clone of the DATA object and returns it
+        Input:
+            self - current DATA instance
+            init - init counter
+            x - data to be cloned
+        Output:
+            data - Clone of DATA object
+        &#34;&#34;&#34;
         data = DATA({self.cols.names})
         map(init or {}, data.add(x))
         return data
 
     def stats(self, what, cols, nPlaces):
+        &#34;&#34;&#34;
+        Function:
+            stats
+        Description:
+            Gets a given statistic and returns the rounded answer
+        Input:
+            self - current DATA instance
+            what - statistic to be returned
+            cols - cols to use as the data for statistic
+            nPlaces - # of decimal places stat is rounded to
+        Output:
+            map of cols y position and anonymous function that calculates the rounded stat
+        &#34;&#34;&#34;
         def fun(col):
             mid = getattr(col, what or &#34;mid&#34;)
             rounded = round(float(mid()), nPlaces)
             return (rounded, col.txt)
-        return kap(cols or self.cols.y, fun)</code></pre>
+        return test.kap(cols or self.cols.y, fun)</code></pre>
 </details>
 </section>
 <section>
@@ -73,26 +102,6 @@ class DATA:
 <section>
 </section>
 <section>
-<h2 class="section-title" id="header-functions">Functions</h2>
-<dl>
-<dt id="src.data.kap"><code class="name flex">
-<span>def <span class="ident">kap</span></span>(<span>t, fun)</span>
-</code></dt>
-<dd>
-<div class="desc"></div>
-<details class="source">
-<summary>
-<span>Expand source code</span>
-</summary>
-<pre><code class="python">def kap(t, fun):
-    u ={}
-    for v in t:
-        v, k = fun(v)
-        u[k or len(u) + 1] = v
-    return u</code></pre>
-</details>
-</dd>
-</dl>
 </section>
 <section>
 <h2 class="section-title" id="header-classes">Classes</h2>
@@ -118,6 +127,17 @@ class DATA:
             map(src or {}, fun)
 
     def add(self, t):
+        &#34;&#34;&#34;
+        Function:
+            add
+        Description:
+            Adds the data to rows and cols, or makes a COLS if there aren&#39;t any columns stored yet
+        Input:
+            self - current DATA instance
+            t - data to be added
+        Output:
+            None
+        &#34;&#34;&#34;
         if self.cols:
             t = t.cells if hasattr(t, &#34;cells&#34;) else ROW(t)
             self.rows.append(t)
@@ -126,16 +146,41 @@ class DATA:
             self.cols = COLS(t)
 
     def clone(self, init, x):
+        &#34;&#34;&#34;
+        Function:
+            clone
+        Description:
+            Creates a clone of the DATA object and returns it
+        Input:
+            self - current DATA instance
+            init - init counter
+            x - data to be cloned
+        Output:
+            data - Clone of DATA object
+        &#34;&#34;&#34;
         data = DATA({self.cols.names})
         map(init or {}, data.add(x))
         return data
 
     def stats(self, what, cols, nPlaces):
+        &#34;&#34;&#34;
+        Function:
+            stats
+        Description:
+            Gets a given statistic and returns the rounded answer
+        Input:
+            self - current DATA instance
+            what - statistic to be returned
+            cols - cols to use as the data for statistic
+            nPlaces - # of decimal places stat is rounded to
+        Output:
+            map of cols y position and anonymous function that calculates the rounded stat
+        &#34;&#34;&#34;
         def fun(col):
             mid = getattr(col, what or &#34;mid&#34;)
             rounded = round(float(mid()), nPlaces)
             return (rounded, col.txt)
-        return kap(cols or self.cols.y, fun)</code></pre>
+        return test.kap(cols or self.cols.y, fun)</code></pre>
 </details>
 <h3>Methods</h3>
 <dl>
@@ -143,12 +188,31 @@ class DATA:
 <span>def <span class="ident">add</span></span>(<span>self, t)</span>
 </code></dt>
 <dd>
-<div class="desc"></div>
+<div class="desc"><h2 id="function">Function</h2>
+<p>add</p>
+<h2 id="description">Description</h2>
+<p>Adds the data to rows and cols, or makes a COLS if there aren't any columns stored yet</p>
+<h2 id="input">Input</h2>
+<p>self - current DATA instance
+t - data to be added</p>
+<h2 id="output">Output</h2>
+<p>None</p></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def add(self, t):
+    &#34;&#34;&#34;
+    Function:
+        add
+    Description:
+        Adds the data to rows and cols, or makes a COLS if there aren&#39;t any columns stored yet
+    Input:
+        self - current DATA instance
+        t - data to be added
+    Output:
+        None
+    &#34;&#34;&#34;
     if self.cols:
         t = t.cells if hasattr(t, &#34;cells&#34;) else ROW(t)
         self.rows.append(t)
@@ -161,12 +225,33 @@ class DATA:
 <span>def <span class="ident">clone</span></span>(<span>self, init, x)</span>
 </code></dt>
 <dd>
-<div class="desc"></div>
+<div class="desc"><h2 id="function">Function</h2>
+<p>clone</p>
+<h2 id="description">Description</h2>
+<p>Creates a clone of the DATA object and returns it</p>
+<h2 id="input">Input</h2>
+<p>self - current DATA instance
+init - init counter
+x - data to be cloned</p>
+<h2 id="output">Output</h2>
+<p>data - Clone of DATA object</p></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def clone(self, init, x):
+    &#34;&#34;&#34;
+    Function:
+        clone
+    Description:
+        Creates a clone of the DATA object and returns it
+    Input:
+        self - current DATA instance
+        init - init counter
+        x - data to be cloned
+    Output:
+        data - Clone of DATA object
+    &#34;&#34;&#34;
     data = DATA({self.cols.names})
     map(init or {}, data.add(x))
     return data</code></pre>
@@ -176,17 +261,40 @@ class DATA:
 <span>def <span class="ident">stats</span></span>(<span>self, what, cols, nPlaces)</span>
 </code></dt>
 <dd>
-<div class="desc"></div>
+<div class="desc"><h2 id="function">Function</h2>
+<p>stats</p>
+<h2 id="description">Description</h2>
+<p>Gets a given statistic and returns the rounded answer</p>
+<h2 id="input">Input</h2>
+<p>self - current DATA instance
+what - statistic to be returned
+cols - cols to use as the data for statistic
+nPlaces - # of decimal places stat is rounded to</p>
+<h2 id="output">Output</h2>
+<p>map of cols y position and anonymous function that calculates the rounded stat</p></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def stats(self, what, cols, nPlaces):
+    &#34;&#34;&#34;
+    Function:
+        stats
+    Description:
+        Gets a given statistic and returns the rounded answer
+    Input:
+        self - current DATA instance
+        what - statistic to be returned
+        cols - cols to use as the data for statistic
+        nPlaces - # of decimal places stat is rounded to
+    Output:
+        map of cols y position and anonymous function that calculates the rounded stat
+    &#34;&#34;&#34;
     def fun(col):
         mid = getattr(col, what or &#34;mid&#34;)
         rounded = round(float(mid()), nPlaces)
         return (rounded, col.txt)
-    return kap(cols or self.cols.y, fun)</code></pre>
+    return test.kap(cols or self.cols.y, fun)</code></pre>
 </details>
 </dd>
 </dl>
@@ -203,11 +311,6 @@ class DATA:
 <li><h3>Super-module</h3>
 <ul>
 <li><code><a title="src" href="index.html">src</a></code></li>
-</ul>
-</li>
-<li><h3><a href="#header-functions">Functions</a></h3>
-<ul class="">
-<li><code><a title="src.data.kap" href="#src.data.kap">kap</a></code></li>
 </ul>
 </li>
 <li><h3><a href="#header-classes">Classes</a></h3>

@@ -72,10 +72,21 @@ def eg(key, string, fun):
 def oo():
     pass
 
-def kap(t, fun):
+def kap(listOfCols, fun): # t is
+    &#34;&#34;&#34;
+    Function:
+        kap
+    Description:
+        Creates map that stores functions as value
+    Input:
+        listOfCols - list of columns
+        fun - anonymous function to be used as value in map
+    Output:
+        u - map of anonymous functions
+    &#34;&#34;&#34;
     u = {}
-    for k, v in t.items():
-        v, k = fun(k, v)
+    for k, v in enumerate(listOfCols):
+        v, k = fun(v)
         u[k or len(u)+1] = v
     return u
 
@@ -152,6 +163,16 @@ def numFunc():
     return 11/7 == num.mid() and 0.787 == round(num.div(), ndigits=3)
 
 def crashFunc():
+    &#34;&#34;&#34;
+    Function:
+        crashFunc
+    Description:
+        Callback function to test crashes
+    Input:
+        None
+    Output:
+        an instance of NUM doesn&#39;t have the property &#39;some.missing.nested.field&#39;
+    &#34;&#34;&#34;
     num = NUM()
     return not hasattr(num, &#39;some.missing.nested.field&#39;)
 
@@ -195,6 +216,16 @@ def printCLIvalues():
     print(cli_args)
 
 def csvFunc():
+    &#34;&#34;&#34;
+    Function:
+        csvFunc
+    Description:
+        Callback function to test readCSV() function
+    Input:
+        None
+    Output:
+        there are 8 * 399 elements in the default csv file in etc/data/auto93.csv
+    &#34;&#34;&#34;
     global n
     def fun(t):
         global n
@@ -205,14 +236,33 @@ def csvFunc():
     return n == 8 * 399
 
 def readCSV(sFilename, fun):
-    n = 0
+    &#34;&#34;&#34;
+    Function:
+        readCSV
+    Description:
+        reads a CSV and runs a callback function on every line
+    Input:
+        sFilename - path of CSV file to be read
+        fun - callback function to be called for each line in the CSV
+    Output:
+        None
+    &#34;&#34;&#34;
     with open(sFilename, mode=&#39;r&#39;) as file:
         csvFile = csv.reader(file)
         for line in csvFile:
-            n += len(line)
             fun(line)
 
 def dataFunc():
+    &#34;&#34;&#34;
+    Function:
+        dataFunc
+    Description:
+        Callback function to test DATA class
+    Input:
+        None
+    Output:
+        DATA instance is successfully created and has correct property values when reading the default CSV file at etc/data/auto93.csv
+    &#34;&#34;&#34;
     script_dir = os.path.dirname(__file__)
     full_path = os.path.join(script_dir, args.file)
     data = DATA(full_path)
@@ -223,19 +273,22 @@ def dataFunc():
     )
 
 def statsFunc():
+    &#34;&#34;&#34;
+    Function:
+        statsFunc
+    Description:
+        Callback function to test stats function in DATA class
+    Input:
+        None
+    Output:
+        the statistics for the DATA instance using the default file at etc/data/auto93.csv are printed to the console
+    &#34;&#34;&#34;
     script_dir = os.path.dirname(__file__)
     full_path = os.path.join(script_dir, args.file)
     data = DATA(full_path)
     for k, cols in {&#39;y&#39;: data.cols.y, &#39;x&#39;: data.cols.x}.items():
         print(k, &#34;\tmid&#34;, (data.stats(&#34;mid&#34;, cols, 2)))
-        print(&#34;&#34;, &#34;\tdiv&#34;, (data.stats(&#34;div&#34;, cols, 2)))
-
-def kap(listOfCols, fun): # t is 
-    u = {}
-    for k, v in enumerate(listOfCols):
-        v, k = fun(v)
-        u[k or len(u)+1] = v
-    return u</code></pre>
+        print(&#34;&#34;, &#34;\tdiv&#34;, (data.stats(&#34;div&#34;, cols, 2)))</code></pre>
 </details>
 </section>
 <section>
@@ -249,12 +302,29 @@ def kap(listOfCols, fun): # t is
 <span>def <span class="ident">crashFunc</span></span>(<span>)</span>
 </code></dt>
 <dd>
-<div class="desc"></div>
+<div class="desc"><h2 id="function">Function</h2>
+<p>crashFunc</p>
+<h2 id="description">Description</h2>
+<p>Callback function to test crashes</p>
+<h2 id="input">Input</h2>
+<p>None</p>
+<h2 id="output">Output</h2>
+<p>an instance of NUM doesn't have the property 'some.missing.nested.field'</p></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def crashFunc():
+    &#34;&#34;&#34;
+    Function:
+        crashFunc
+    Description:
+        Callback function to test crashes
+    Input:
+        None
+    Output:
+        an instance of NUM doesn&#39;t have the property &#39;some.missing.nested.field&#39;
+    &#34;&#34;&#34;
     num = NUM()
     return not hasattr(num, &#39;some.missing.nested.field&#39;)</code></pre>
 </details>
@@ -263,12 +333,29 @@ def kap(listOfCols, fun): # t is
 <span>def <span class="ident">csvFunc</span></span>(<span>)</span>
 </code></dt>
 <dd>
-<div class="desc"></div>
+<div class="desc"><h2 id="function">Function</h2>
+<p>csvFunc</p>
+<h2 id="description">Description</h2>
+<p>Callback function to test readCSV() function</p>
+<h2 id="input">Input</h2>
+<p>None</p>
+<h2 id="output">Output</h2>
+<p>there are 8 * 399 elements in the default csv file in etc/data/auto93.csv</p></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def csvFunc():
+    &#34;&#34;&#34;
+    Function:
+        csvFunc
+    Description:
+        Callback function to test readCSV() function
+    Input:
+        None
+    Output:
+        there are 8 * 399 elements in the default csv file in etc/data/auto93.csv
+    &#34;&#34;&#34;
     global n
     def fun(t):
         global n
@@ -283,12 +370,29 @@ def kap(listOfCols, fun): # t is
 <span>def <span class="ident">dataFunc</span></span>(<span>)</span>
 </code></dt>
 <dd>
-<div class="desc"></div>
+<div class="desc"><h2 id="function">Function</h2>
+<p>dataFunc</p>
+<h2 id="description">Description</h2>
+<p>Callback function to test DATA class</p>
+<h2 id="input">Input</h2>
+<p>None</p>
+<h2 id="output">Output</h2>
+<p>DATA instance is successfully created and has correct property values when reading the default CSV file at etc/data/auto93.csv</p></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def dataFunc():
+    &#34;&#34;&#34;
+    Function:
+        dataFunc
+    Description:
+        Callback function to test DATA class
+    Input:
+        None
+    Output:
+        DATA instance is successfully created and has correct property values when reading the default CSV file at etc/data/auto93.csv
+    &#34;&#34;&#34;
     script_dir = os.path.dirname(__file__)
     full_path = os.path.join(script_dir, args.file)
     data = DATA(full_path)
@@ -377,12 +481,31 @@ fun - callback function to use for test case</p>
 <span>def <span class="ident">kap</span></span>(<span>listOfCols, fun)</span>
 </code></dt>
 <dd>
-<div class="desc"></div>
+<div class="desc"><h2 id="function">Function</h2>
+<p>kap</p>
+<h2 id="description">Description</h2>
+<p>Creates map that stores functions as value</p>
+<h2 id="input">Input</h2>
+<p>listOfCols - list of columns
+fun - anonymous function to be used as value in map</p>
+<h2 id="output">Output</h2>
+<p>u - map of anonymous functions</p></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def kap(listOfCols, fun): # t is 
+<pre><code class="python">def kap(listOfCols, fun): # t is
+    &#34;&#34;&#34;
+    Function:
+        kap
+    Description:
+        Creates map that stores functions as value
+    Input:
+        listOfCols - list of columns
+        fun - anonymous function to be used as value in map
+    Output:
+        u - map of anonymous functions
+    &#34;&#34;&#34;
     u = {}
     for k, v in enumerate(listOfCols):
         v, k = fun(v)
@@ -551,17 +674,34 @@ high - high value</p>
 <span>def <span class="ident">readCSV</span></span>(<span>sFilename, fun)</span>
 </code></dt>
 <dd>
-<div class="desc"></div>
+<div class="desc"><h2 id="function">Function</h2>
+<p>readCSV</p>
+<h2 id="description">Description</h2>
+<p>reads a CSV and runs a callback function on every line</p>
+<h2 id="input">Input</h2>
+<p>sFilename - path of CSV file to be read
+fun - callback function to be called for each line in the CSV</p>
+<h2 id="output">Output</h2>
+<p>None</p></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def readCSV(sFilename, fun):
-    n = 0
+    &#34;&#34;&#34;
+    Function:
+        readCSV
+    Description:
+        reads a CSV and runs a callback function on every line
+    Input:
+        sFilename - path of CSV file to be read
+        fun - callback function to be called for each line in the CSV
+    Output:
+        None
+    &#34;&#34;&#34;
     with open(sFilename, mode=&#39;r&#39;) as file:
         csvFile = csv.reader(file)
         for line in csvFile:
-            n += len(line)
             fun(line)</code></pre>
 </details>
 </dd>
@@ -569,12 +709,29 @@ high - high value</p>
 <span>def <span class="ident">statsFunc</span></span>(<span>)</span>
 </code></dt>
 <dd>
-<div class="desc"></div>
+<div class="desc"><h2 id="function">Function</h2>
+<p>statsFunc</p>
+<h2 id="description">Description</h2>
+<p>Callback function to test stats function in DATA class</p>
+<h2 id="input">Input</h2>
+<p>None</p>
+<h2 id="output">Output</h2>
+<p>the statistics for the DATA instance using the default file at etc/data/auto93.csv are printed to the console</p></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def statsFunc():
+    &#34;&#34;&#34;
+    Function:
+        statsFunc
+    Description:
+        Callback function to test stats function in DATA class
+    Input:
+        None
+    Output:
+        the statistics for the DATA instance using the default file at etc/data/auto93.csv are printed to the console
+    &#34;&#34;&#34;
     script_dir = os.path.dirname(__file__)
     full_path = os.path.join(script_dir, args.file)
     data = DATA(full_path)
