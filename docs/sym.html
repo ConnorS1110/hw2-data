@@ -38,6 +38,17 @@ class SYM:
         self.mode = None
 
     def add(self, x):
+        &#34;&#34;&#34;
+        Function:
+            add
+        Description:
+            If n is not ?, n on the instance object is incremented by one and NUM attributes are re-calculated
+        Input:
+            self - current SYM instance
+            n - value to add
+        Output:
+            None
+        &#34;&#34;&#34;
         if x != &#34;?&#34;:
             self.n += 1
             self.has[x] = 1 + self.has.get(x, 0)  # Return to later for dictionary
@@ -46,10 +57,40 @@ class SYM:
                 self.mode = x
 
     def mid(self):
+        &#34;&#34;&#34;
+        Function:
+            mid
+        Description:
+            returns the mode of the current instance
+        Input:
+            self - current SYM instance
+        Output:
+            mode
+        &#34;&#34;&#34;
         return self.mode
 
     def div(self):  # Removed all parameters
+        &#34;&#34;&#34;
+        Function:
+            div
+        Description:
+            Determines if there is diversity around the center
+        Input:
+            self - current NUM instance
+        Output:
+            Diversity around the center
+        &#34;&#34;&#34;
         def fun(p):
+            &#34;&#34;&#34;
+            Function:
+                fun
+            Description:
+                Aids in calculation to determine diversity
+            Input:
+                p - current value of self.has divided by self.n
+            Output:
+                p multiplied by log base 2 of p
+            &#34;&#34;&#34;
             return p * math.log(p, 2)
 
         e = 0
@@ -87,6 +128,17 @@ class SYM:
         self.mode = None
 
     def add(self, x):
+        &#34;&#34;&#34;
+        Function:
+            add
+        Description:
+            If n is not ?, n on the instance object is incremented by one and NUM attributes are re-calculated
+        Input:
+            self - current SYM instance
+            n - value to add
+        Output:
+            None
+        &#34;&#34;&#34;
         if x != &#34;?&#34;:
             self.n += 1
             self.has[x] = 1 + self.has.get(x, 0)  # Return to later for dictionary
@@ -95,10 +147,40 @@ class SYM:
                 self.mode = x
 
     def mid(self):
+        &#34;&#34;&#34;
+        Function:
+            mid
+        Description:
+            returns the mode of the current instance
+        Input:
+            self - current SYM instance
+        Output:
+            mode
+        &#34;&#34;&#34;
         return self.mode
 
     def div(self):  # Removed all parameters
+        &#34;&#34;&#34;
+        Function:
+            div
+        Description:
+            Determines if there is diversity around the center
+        Input:
+            self - current NUM instance
+        Output:
+            Diversity around the center
+        &#34;&#34;&#34;
         def fun(p):
+            &#34;&#34;&#34;
+            Function:
+                fun
+            Description:
+                Aids in calculation to determine diversity
+            Input:
+                p - current value of self.has divided by self.n
+            Output:
+                p multiplied by log base 2 of p
+            &#34;&#34;&#34;
             return p * math.log(p, 2)
 
         e = 0
@@ -112,12 +194,31 @@ class SYM:
 <span>def <span class="ident">add</span></span>(<span>self, x)</span>
 </code></dt>
 <dd>
-<div class="desc"></div>
+<div class="desc"><h2 id="function">Function</h2>
+<p>add</p>
+<h2 id="description">Description</h2>
+<p>If n is not ?, n on the instance object is incremented by one and NUM attributes are re-calculated</p>
+<h2 id="input">Input</h2>
+<p>self - current SYM instance
+n - value to add</p>
+<h2 id="output">Output</h2>
+<p>None</p></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def add(self, x):
+    &#34;&#34;&#34;
+    Function:
+        add
+    Description:
+        If n is not ?, n on the instance object is incremented by one and NUM attributes are re-calculated
+    Input:
+        self - current SYM instance
+        n - value to add
+    Output:
+        None
+    &#34;&#34;&#34;
     if x != &#34;?&#34;:
         self.n += 1
         self.has[x] = 1 + self.has.get(x, 0)  # Return to later for dictionary
@@ -130,13 +231,40 @@ class SYM:
 <span>def <span class="ident">div</span></span>(<span>self)</span>
 </code></dt>
 <dd>
-<div class="desc"></div>
+<div class="desc"><h2 id="function">Function</h2>
+<p>div</p>
+<h2 id="description">Description</h2>
+<p>Determines if there is diversity around the center</p>
+<h2 id="input">Input</h2>
+<p>self - current NUM instance</p>
+<h2 id="output">Output</h2>
+<p>Diversity around the center</p></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def div(self):  # Removed all parameters
+    &#34;&#34;&#34;
+    Function:
+        div
+    Description:
+        Determines if there is diversity around the center
+    Input:
+        self - current NUM instance
+    Output:
+        Diversity around the center
+    &#34;&#34;&#34;
     def fun(p):
+        &#34;&#34;&#34;
+        Function:
+            fun
+        Description:
+            Aids in calculation to determine diversity
+        Input:
+            p - current value of self.has divided by self.n
+        Output:
+            p multiplied by log base 2 of p
+        &#34;&#34;&#34;
         return p * math.log(p, 2)
 
     e = 0
@@ -149,12 +277,29 @@ class SYM:
 <span>def <span class="ident">mid</span></span>(<span>self)</span>
 </code></dt>
 <dd>
-<div class="desc"></div>
+<div class="desc"><h2 id="function">Function</h2>
+<p>mid</p>
+<h2 id="description">Description</h2>
+<p>returns the mode of the current instance</p>
+<h2 id="input">Input</h2>
+<p>self - current SYM instance</p>
+<h2 id="output">Output</h2>
+<p>mode</p></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def mid(self):
+    &#34;&#34;&#34;
+    Function:
+        mid
+    Description:
+        returns the mode of the current instance
+    Input:
+        self - current SYM instance
+    Output:
+        mode
+    &#34;&#34;&#34;
     return self.mode</code></pre>
 </details>
 </dd>

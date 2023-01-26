@@ -29,7 +29,13 @@
 <pre><code class="python">import testfile as test
 from row import ROW
 from cols import COLS
-from misc import *
+
+def kap(t, fun):
+    u ={}
+    for v in t:
+        v, k = fun(v)
+        u[k or len(u) + 1] = v
+    return u
 
 class DATA:
     def __init__(self, src):
@@ -67,6 +73,26 @@ class DATA:
 <section>
 </section>
 <section>
+<h2 class="section-title" id="header-functions">Functions</h2>
+<dl>
+<dt id="src.data.kap"><code class="name flex">
+<span>def <span class="ident">kap</span></span>(<span>t, fun)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def kap(t, fun):
+    u ={}
+    for v in t:
+        v, k = fun(v)
+        u[k or len(u) + 1] = v
+    return u</code></pre>
+</details>
+</dd>
+</dl>
 </section>
 <section>
 <h2 class="section-title" id="header-classes">Classes</h2>
@@ -177,6 +203,11 @@ class DATA:
 <li><h3>Super-module</h3>
 <ul>
 <li><code><a title="src" href="index.html">src</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-functions">Functions</a></h3>
+<ul class="">
+<li><code><a title="src.data.kap" href="#src.data.kap">kap</a></code></li>
 </ul>
 </li>
 <li><h3><a href="#header-classes">Classes</a></h3>

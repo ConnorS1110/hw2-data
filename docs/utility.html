@@ -52,6 +52,18 @@ egs = {}
 n = 0
 
 def eg(key, string, fun):
+    &#34;&#34;&#34;
+    Function:
+        eg
+    Description:
+        Creates an example test case and adds it to the dictionary of test cases. Appends the key/value to the actions of the help string
+    Input:
+        key - key of argument
+        string - value of argument as a string
+        fun - callback function to use for test case
+    Output:
+        None
+    &#34;&#34;&#34;
     global egs
     global help
     egs[key] = fun
@@ -68,12 +80,33 @@ def kap(t, fun):
     return u
 
 def rand(low, high):
+    &#34;&#34;&#34;
+    Function:
+        rand
+    Description:
+        Creates a random number
+    Input:
+        low - low value
+        high - high value
+    Output:
+        Random number
+    &#34;&#34;&#34;
     global Seed
     low, high = low or 0, high or 1
     Seed = (16807 * Seed) % 2147483647
     return low + (high - low) * Seed / 2147483647
 
 def randFunc():
+    &#34;&#34;&#34;
+    Function:
+        randFunc
+    Description:
+        Callback function to test the rand function
+    Input:
+        None
+    Output:
+        checks if m1 equals m2 and that they round to 0.5 as a boolean
+    &#34;&#34;&#34;
     global args
     global Seed
     num1, num2 = NUM(), NUM()
@@ -87,12 +120,32 @@ def randFunc():
     return m1 == m2 and 0.5 == round(m1, 1)
 
 def symFunc():
+    &#34;&#34;&#34;
+    Function:
+        symFunc
+    Description:
+        Callback function to test SYM class
+    Input:
+        None
+    Output:
+        &#39;a&#39; is the median value in the array and that the div to 3 decimal points equals 1.379 as a boolean
+    &#34;&#34;&#34;
     sym = SYM()
     for i in [&#34;a&#34;,&#34;a&#34;,&#34;a&#34;,&#34;a&#34;,&#34;b&#34;,&#34;b&#34;,&#34;c&#34;]:
         sym.add(i)
     return &#34;a&#34; == sym.mid() and 1.379 == round(sym.div(), ndigits=3)
 
 def numFunc():
+    &#34;&#34;&#34;
+    Function:
+        numFunc
+    Description:
+        Callback function to test the NUM class
+    Input:
+        None
+    Output:
+        The mean equals 11/7 and the div equals 0.787 as a boolean
+    &#34;&#34;&#34;
     num = NUM()
     for element in [1,1,1,1,2,2,3]:
         num.add(element)
@@ -103,6 +156,16 @@ def crashFunc():
     return not hasattr(num, &#39;some.missing.nested.field&#39;)
 
 def getCliArgs():
+    &#34;&#34;&#34;
+    Function:
+        getCliArgs
+    Description:
+        Parses out the arguments entered or returns an error if incorrect syntax is used
+    Input:
+        None
+    Output:
+        None
+    &#34;&#34;&#34;
     global args
     parser = argparse.ArgumentParser(add_help=False)
     parser.add_argument(&#34;-d&#34;, &#34;--dump&#34;, type=bool, default=False, required=False, help=&#34;on crash, dump stack&#34;)
@@ -113,6 +176,16 @@ def getCliArgs():
     args = parser.parse_args()
 
 def printCLIvalues():
+    &#34;&#34;&#34;
+    Function:
+        printCLIvalues
+    Description:
+        Prints the arguments
+    Input:
+        None
+    Output:
+        None
+    &#34;&#34;&#34;
     cli_args = {}
     cli_args[&#34;dump&#34;] = args.dump
     cli_args[&#34;go&#34;] = args.go
@@ -230,12 +303,33 @@ def kap(listOfCols, fun): # t is
 <span>def <span class="ident">eg</span></span>(<span>key, string, fun)</span>
 </code></dt>
 <dd>
-<div class="desc"></div>
+<div class="desc"><h2 id="function">Function</h2>
+<p>eg</p>
+<h2 id="description">Description</h2>
+<p>Creates an example test case and adds it to the dictionary of test cases. Appends the key/value to the actions of the help string</p>
+<h2 id="input">Input</h2>
+<p>key - key of argument
+string - value of argument as a string
+fun - callback function to use for test case</p>
+<h2 id="output">Output</h2>
+<p>None</p></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def eg(key, string, fun):
+    &#34;&#34;&#34;
+    Function:
+        eg
+    Description:
+        Creates an example test case and adds it to the dictionary of test cases. Appends the key/value to the actions of the help string
+    Input:
+        key - key of argument
+        string - value of argument as a string
+        fun - callback function to use for test case
+    Output:
+        None
+    &#34;&#34;&#34;
     global egs
     global help
     egs[key] = fun
@@ -246,12 +340,29 @@ def kap(listOfCols, fun): # t is
 <span>def <span class="ident">getCliArgs</span></span>(<span>)</span>
 </code></dt>
 <dd>
-<div class="desc"></div>
+<div class="desc"><h2 id="function">Function</h2>
+<p>getCliArgs</p>
+<h2 id="description">Description</h2>
+<p>Parses out the arguments entered or returns an error if incorrect syntax is used</p>
+<h2 id="input">Input</h2>
+<p>None</p>
+<h2 id="output">Output</h2>
+<p>None</p></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def getCliArgs():
+    &#34;&#34;&#34;
+    Function:
+        getCliArgs
+    Description:
+        Parses out the arguments entered or returns an error if incorrect syntax is used
+    Input:
+        None
+    Output:
+        None
+    &#34;&#34;&#34;
     global args
     parser = argparse.ArgumentParser(add_help=False)
     parser.add_argument(&#34;-d&#34;, &#34;--dump&#34;, type=bool, default=False, required=False, help=&#34;on crash, dump stack&#34;)
@@ -283,12 +394,29 @@ def kap(listOfCols, fun): # t is
 <span>def <span class="ident">numFunc</span></span>(<span>)</span>
 </code></dt>
 <dd>
-<div class="desc"></div>
+<div class="desc"><h2 id="function">Function</h2>
+<p>numFunc</p>
+<h2 id="description">Description</h2>
+<p>Callback function to test the NUM class</p>
+<h2 id="input">Input</h2>
+<p>None</p>
+<h2 id="output">Output</h2>
+<p>The mean equals 11/7 and the div equals 0.787 as a boolean</p></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def numFunc():
+    &#34;&#34;&#34;
+    Function:
+        numFunc
+    Description:
+        Callback function to test the NUM class
+    Input:
+        None
+    Output:
+        The mean equals 11/7 and the div equals 0.787 as a boolean
+    &#34;&#34;&#34;
     num = NUM()
     for element in [1,1,1,1,2,2,3]:
         num.add(element)
@@ -312,12 +440,29 @@ def kap(listOfCols, fun): # t is
 <span>def <span class="ident">printCLIvalues</span></span>(<span>)</span>
 </code></dt>
 <dd>
-<div class="desc"></div>
+<div class="desc"><h2 id="function">Function</h2>
+<p>printCLIvalues</p>
+<h2 id="description">Description</h2>
+<p>Prints the arguments</p>
+<h2 id="input">Input</h2>
+<p>None</p>
+<h2 id="output">Output</h2>
+<p>None</p></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def printCLIvalues():
+    &#34;&#34;&#34;
+    Function:
+        printCLIvalues
+    Description:
+        Prints the arguments
+    Input:
+        None
+    Output:
+        None
+    &#34;&#34;&#34;
     cli_args = {}
     cli_args[&#34;dump&#34;] = args.dump
     cli_args[&#34;go&#34;] = args.go
@@ -331,12 +476,31 @@ def kap(listOfCols, fun): # t is
 <span>def <span class="ident">rand</span></span>(<span>low, high)</span>
 </code></dt>
 <dd>
-<div class="desc"></div>
+<div class="desc"><h2 id="function">Function</h2>
+<p>rand</p>
+<h2 id="description">Description</h2>
+<p>Creates a random number</p>
+<h2 id="input">Input</h2>
+<p>low - low value
+high - high value</p>
+<h2 id="output">Output</h2>
+<p>Random number</p></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def rand(low, high):
+    &#34;&#34;&#34;
+    Function:
+        rand
+    Description:
+        Creates a random number
+    Input:
+        low - low value
+        high - high value
+    Output:
+        Random number
+    &#34;&#34;&#34;
     global Seed
     low, high = low or 0, high or 1
     Seed = (16807 * Seed) % 2147483647
@@ -347,12 +511,29 @@ def kap(listOfCols, fun): # t is
 <span>def <span class="ident">randFunc</span></span>(<span>)</span>
 </code></dt>
 <dd>
-<div class="desc"></div>
+<div class="desc"><h2 id="function">Function</h2>
+<p>randFunc</p>
+<h2 id="description">Description</h2>
+<p>Callback function to test the rand function</p>
+<h2 id="input">Input</h2>
+<p>None</p>
+<h2 id="output">Output</h2>
+<p>checks if m1 equals m2 and that they round to 0.5 as a boolean</p></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def randFunc():
+    &#34;&#34;&#34;
+    Function:
+        randFunc
+    Description:
+        Callback function to test the rand function
+    Input:
+        None
+    Output:
+        checks if m1 equals m2 and that they round to 0.5 as a boolean
+    &#34;&#34;&#34;
     global args
     global Seed
     num1, num2 = NUM(), NUM()
@@ -406,12 +587,29 @@ def kap(listOfCols, fun): # t is
 <span>def <span class="ident">symFunc</span></span>(<span>)</span>
 </code></dt>
 <dd>
-<div class="desc"></div>
+<div class="desc"><h2 id="function">Function</h2>
+<p>symFunc</p>
+<h2 id="description">Description</h2>
+<p>Callback function to test SYM class</p>
+<h2 id="input">Input</h2>
+<p>None</p>
+<h2 id="output">Output</h2>
+<p>'a' is the median value in the array and that the div to 3 decimal points equals 1.379 as a boolean</p></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def symFunc():
+    &#34;&#34;&#34;
+    Function:
+        symFunc
+    Description:
+        Callback function to test SYM class
+    Input:
+        None
+    Output:
+        &#39;a&#39; is the median value in the array and that the div to 3 decimal points equals 1.379 as a boolean
+    &#34;&#34;&#34;
     sym = SYM()
     for i in [&#34;a&#34;,&#34;a&#34;,&#34;a&#34;,&#34;a&#34;,&#34;b&#34;,&#34;b&#34;,&#34;c&#34;]:
         sym.add(i)
