@@ -103,9 +103,16 @@ function ROW.new(i,t) i.cells=t; end --> ROW;
 --
 -- ### DATA
 -- Store many rows, summarized into columns
+local counter = 0
 function DATA.new(i,src,     fun) --> DATA; A container of `i.rows`, to be summarized in `i.cols`
   i.rows, i.cols = {}, nil
-  fun = function(x) i:add(x) end
+  print("Inside DATA Function")
+  fun = function(x) 
+    print("Inside DATA Anonymous")
+    counter = counter + 1
+    i:add(x)
+    print(#x)
+  end
   if type(src) == "string" then csv(src,fun)  -- load from a csv file on disk
                            else map(src or {}, fun)  --  load from a list
                            end end
@@ -116,7 +123,8 @@ function DATA.add(i,t) --> nil; add a new row, update column headers
        -- t =ROW(t.cells and t.cells or t) -- make a new ROW
        push(i.rows, t) -- add new data to "i.rows"
        i.cols:add(t)  -- update the summary information in "ic.ols"
-  else i.cols=COLS(t)  end end --  here, we create "i.cols" from the first row
+  else i.cols=COLS(t)  end 
+end --  here, we create "i.cols" from the first row
 
 function DATA.clone(i,  init,     data) --> DATA; return a DATA with same structure as `ii.
   data=DATA({i.cols.names})
@@ -240,17 +248,17 @@ function eg(key,str, fun) --> nil; register an example.
 --   for _,x in pairs{1,1,1,1,2,2,3} do num:add(x) end
 --   return 11/7 == num:mid() and 0.787 == rnd(num:div()) end )
 
-eg("csv","read from csv", function(n)
-  n=0;
-  csv(the.file,function(t) n=n+#t end)
-  return n==8*399 end)
+-- eg("csv","read from csv", function(n)
+--   n=0;
+--   csv(the.file,function(t) n=n+#t end)
+--   return n==8*399 end)
 
--- eg("data","read DATA csv", function(     data)
---   data=DATA(the.file)
---   return #data.rows == 398 and
---          data.cols.y[1].w == -1 and
---          data.cols.x[1].at == 1 and
---          #data.cols.x==4 end)
+eg("data","read DATA csv", function(     data)
+  data=DATA(the.file)
+  return #data.rows == 398 and
+         data.cols.y[1].w == -1 and
+         data.cols.x[1].at == 1 and
+         #data.cols.x==4 end)
 
 -- eg("stats","stats from DATA", function(     data)
 --   data=DATA(the.file)

@@ -13,6 +13,7 @@ class NUM:
         # print("Inside Add", n)
         if n != "?": # Why Question mark
             self.n += 1
+            n = float(n)
             d = n - self.mu
             self.mu += d / self.n
             self.m2 += d * (n - self.mu)

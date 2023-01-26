@@ -3,18 +3,23 @@ from row import ROW
 from cols import COLS
 
 class DATA:
-    def __init__(self, src, x):
+    def __init__(self, src):
+        print(type(src))
         self.rows = []
         self.cols = None
-        fun = self.add(x)
-        if type(src) == "str":
-            test.csv(src, fun)
+        # fun = self.add(x)
+        print("Inside DATA Cons ", src)
+        fun = lambda x: self.add(x)
+        print("Executed fun")
+        if type(src) == str:
+            print("Inside str condition")
+            test.readCSV(src, fun)
         else:
             map(src or {}, fun)
 
     def add(self, t):
         if self.cols:
-            t = t.cells and t or ROW(t)
+            t = t.cells if hasattr(t, "cells") else ROW(t)
             self.rows.append(t)
             self.cols.add(t)
         else:

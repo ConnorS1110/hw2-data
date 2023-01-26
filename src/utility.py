@@ -87,14 +87,30 @@ def printCLIvalues():
 
 def csvFunc():
     global n
+    def fun(t):
+        global n
+        n += len(t)
     script_dir = os.path.dirname(__file__)
     full_path = os.path.join(script_dir, args.file)
-    readCSV(full_path)
+    readCSV(full_path, fun)
     return n == 8 * 399
 
-def readCSV(sFilename):
-    global n
+def readCSV(sFilename, fun):
+    n = 0
     with open(sFilename, mode='r') as file:
         csvFile = csv.reader(file)
         for line in csvFile:
             n += len(line)
+            fun(line)
+
+def dataFunc():
+    print("Inside DataFunc")
+    script_dir = os.path.dirname(__file__)
+    full_path = os.path.join(script_dir, args.file)
+    data = DATA(full_path)
+    return (len(data.rows) == 398 and 
+    data.cols.y[1].w == -1 and 
+    data.cols.x[1].at == 1 and 
+    len(data.cols.x) == 4
+    )
+    
