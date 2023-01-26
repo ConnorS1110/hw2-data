@@ -48,6 +48,7 @@ jobs:
         cp -r ${{ github.workspace }}/docs/* ${{ github.workspace }}
     - name: Pull from remote
       run: |
+        git fetch origin
         git pull --ff-only origin gh-pages
     - name: Commit to gh-pages
       run: |
