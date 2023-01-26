@@ -8,7 +8,17 @@ the = {}
 # Seed = 937162211
 
 def main(the, funs):
-    """Docstring for main function updated"""
+    """
+    Function:
+        main
+    Description:
+        Main function that tests to see if examples pass. If help command is used, the help string is printed and tests are not run
+    Input:
+        funs - Dictionary of callback functions
+    Output:
+        0 - Tests passed
+        1 - 1 or more tests failed
+    """
     fails = 0
     getCliArgs()
     if (utility.args.help):
