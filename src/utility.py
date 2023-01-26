@@ -90,6 +90,7 @@ def printCLIvalues():
     cli_args["go"] = args.go
     cli_args["help"] = args.help
     cli_args["seed"] = args.seed
+    cli_args["file"] = args.file
     print(cli_args)
 
 def csvFunc():
@@ -125,5 +126,12 @@ def statsFunc():
     full_path = os.path.join(script_dir, args.file)
     data = DATA(full_path)
     for k, cols in {'y': data.cols.y, 'x': data.cols.x}.items():
-        print(k, "mid", (data.stats("mid", cols, 2)))
-        print("", "div", (data.stats("div", cols, 2)))
+        print(k, "\tmid", (data.stats("mid", cols, 2)))
+        print("", "\tdiv", (data.stats("div", cols, 2)))
+
+def kap(listOfCols, fun): # t is 
+    u = {}
+    for k, v in enumerate(listOfCols):
+        v, k = fun(v)
+        u[k or len(u)+1] = v
+    return u

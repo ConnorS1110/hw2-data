@@ -1,13 +1,14 @@
 import testfile as test
 from row import ROW
 from cols import COLS
+from misc import *
 
-def kap(listOfCols, fun): # t is 
-    u = {}
-    for k, v in enumerate(listOfCols):
-        v, k = fun(v)
-        u[k or len(u)+1] = v
-    return u
+# def kap(listOfCols, fun): # t is 
+#     u = {}
+#     for k, v in enumerate(listOfCols):
+#         v, k = fun(v)
+#         u[k or len(u)+1] = v
+#     return u
 
 class DATA:
     def __init__(self, src):
