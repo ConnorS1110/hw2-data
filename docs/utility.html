@@ -115,17 +115,33 @@ def printCLIvalues():
 
 def csvFunc():
     global n
+    def fun(t):
+        global n
+        n += len(t)
     script_dir = os.path.dirname(__file__)
     full_path = os.path.join(script_dir, args.file)
-    readCSV(full_path)
+    readCSV(full_path, fun)
     return n == 8 * 399
 
-def readCSV(sFilename):
-    global n
+def readCSV(sFilename, fun):
+    n = 0
     with open(sFilename, mode=&#39;r&#39;) as file:
         csvFile = csv.reader(file)
         for line in csvFile:
-            n += len(line)</code></pre>
+            n += len(line)
+            fun(line)
+
+def dataFunc():
+    print(&#34;Inside DataFunc&#34;)
+    script_dir = os.path.dirname(__file__)
+    full_path = os.path.join(script_dir, args.file)
+    data = DATA(full_path)
+    return (len(data.rows) == 398 and 
+    data.cols.y[1].w == -1 and 
+    data.cols.x[1].at == 1 and 
+    len(data.cols.x) == 4
+    )
+    </code></pre>
 </details>
 </section>
 <section>
@@ -160,10 +176,34 @@ def readCSV(sFilename):
 </summary>
 <pre><code class="python">def csvFunc():
     global n
+    def fun(t):
+        global n
+        n += len(t)
     script_dir = os.path.dirname(__file__)
     full_path = os.path.join(script_dir, args.file)
-    readCSV(full_path)
+    readCSV(full_path, fun)
     return n == 8 * 399</code></pre>
+</details>
+</dd>
+<dt id="src.utility.dataFunc"><code class="name flex">
+<span>def <span class="ident">dataFunc</span></span>(<span>)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def dataFunc():
+    print(&#34;Inside DataFunc&#34;)
+    script_dir = os.path.dirname(__file__)
+    full_path = os.path.join(script_dir, args.file)
+    data = DATA(full_path)
+    return (len(data.rows) == 398 and 
+    data.cols.y[1].w == -1 and 
+    data.cols.x[1].at == 1 and 
+    len(data.cols.x) == 4
+    )</code></pre>
 </details>
 </dd>
 <dt id="src.utility.eg"><code class="name flex">
@@ -289,7 +329,7 @@ def readCSV(sFilename):
 </details>
 </dd>
 <dt id="src.utility.readCSV"><code class="name flex">
-<span>def <span class="ident">readCSV</span></span>(<span>sFilename)</span>
+<span>def <span class="ident">readCSV</span></span>(<span>sFilename, fun)</span>
 </code></dt>
 <dd>
 <div class="desc"></div>
@@ -297,12 +337,13 @@ def readCSV(sFilename):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def readCSV(sFilename):
-    global n
+<pre><code class="python">def readCSV(sFilename, fun):
+    n = 0
     with open(sFilename, mode=&#39;r&#39;) as file:
         csvFile = csv.reader(file)
         for line in csvFile:
-            n += len(line)</code></pre>
+            n += len(line)
+            fun(line)</code></pre>
 </details>
 </dd>
 <dt id="src.utility.symFunc"><code class="name flex">
@@ -341,6 +382,7 @@ def readCSV(sFilename):
 <ul class="two-column">
 <li><code><a title="src.utility.crashFunc" href="#src.utility.crashFunc">crashFunc</a></code></li>
 <li><code><a title="src.utility.csvFunc" href="#src.utility.csvFunc">csvFunc</a></code></li>
+<li><code><a title="src.utility.dataFunc" href="#src.utility.dataFunc">dataFunc</a></code></li>
 <li><code><a title="src.utility.eg" href="#src.utility.eg">eg</a></code></li>
 <li><code><a title="src.utility.getCliArgs" href="#src.utility.getCliArgs">getCliArgs</a></code></li>
 <li><code><a title="src.utility.numFunc" href="#src.utility.numFunc">numFunc</a></code></li>

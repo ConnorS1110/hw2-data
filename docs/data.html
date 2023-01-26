@@ -31,18 +31,23 @@ from row import ROW
 from cols import COLS
 
 class DATA:
-    def __init__(self, src, x):
+    def __init__(self, src):
+        print(type(src))
         self.rows = []
         self.cols = None
-        fun = self.add(x)
-        if type(src) == &#34;str&#34;:
-            test.csv(src, fun)
+        # fun = self.add(x)
+        print(&#34;Inside DATA Cons &#34;, src)
+        fun = lambda x: self.add(x)
+        print(&#34;Executed fun&#34;)
+        if type(src) == str:
+            print(&#34;Inside str condition&#34;)
+            test.readCSV(src, fun)
         else:
             map(src or {}, fun)
 
     def add(self, t):
         if self.cols:
-            t = t.cells and t or ROW(t)
+            t = t.cells if hasattr(t, &#34;cells&#34;) else ROW(t)
             self.rows.append(t)
             self.cols.add(t)
         else:
@@ -72,7 +77,7 @@ class DATA:
 <dl>
 <dt id="src.data.DATA"><code class="flex name class">
 <span>class <span class="ident">DATA</span></span>
-<span>(</span><span>src, x)</span>
+<span>(</span><span>src)</span>
 </code></dt>
 <dd>
 <div class="desc"></div>
@@ -81,18 +86,23 @@ class DATA:
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">class DATA:
-    def __init__(self, src, x):
+    def __init__(self, src):
+        print(type(src))
         self.rows = []
         self.cols = None
-        fun = self.add(x)
-        if type(src) == &#34;str&#34;:
-            test.csv(src, fun)
+        # fun = self.add(x)
+        print(&#34;Inside DATA Cons &#34;, src)
+        fun = lambda x: self.add(x)
+        print(&#34;Executed fun&#34;)
+        if type(src) == str:
+            print(&#34;Inside str condition&#34;)
+            test.readCSV(src, fun)
         else:
             map(src or {}, fun)
 
     def add(self, t):
         if self.cols:
-            t = t.cells and t or ROW(t)
+            t = t.cells if hasattr(t, &#34;cells&#34;) else ROW(t)
             self.rows.append(t)
             self.cols.add(t)
         else:
@@ -123,7 +133,7 @@ class DATA:
 </summary>
 <pre><code class="python">def add(self, t):
     if self.cols:
-        t = t.cells and t or ROW(t)
+        t = t.cells if hasattr(t, &#34;cells&#34;) else ROW(t)
         self.rows.append(t)
         self.cols.add(t)
     else:

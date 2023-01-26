@@ -28,28 +28,59 @@
 </summary>
 <pre><code class="python">from num import NUM
 from sym import SYM
+import re
+
+# class COLS:
+#     def __init__(self, t):
+#         self.names = t
+#         self.all = []
+#         self.x = []
+#         self.y = []
+#         self.klass = []
+#         for n, s in enumerate(t):
+#             if re.match(r&#34;^[A-Z]+&#34;, s):
+#                 col = NUM(n, s)
+#             else:
+#                 col = SYM(n, s)
+#             self.all.append(col)
+#             if not re.search(r&#34;X$&#34;, s):
+#                 if re.search(r&#34;!$&#34;, s):
+#                     self.klass = col
+#                 if re.search(r&#34;[!+-]$&#34;, s):
+#                     self.y.append(col)
+#                 else:
+#                     self.x.append(col)
+
+
+
+#     def add(self, row):
+#         print(row.cells)
+#         print(self.x, self.y)
+#         for _, t in enumerate({self.x, self.y}):
+#             for _, col in enumerate(t):
+#                 col.append(row.cells[col.at])
 
 class COLS:
     def __init__(self, t):
-        self.names = t
-        self.all = []
-        self.x = []
-        self.y = []
-        self.klass = []  # Originally was dictionary
+        self.names, self.all, self.x, self.y, self.klass = t, [], [], [], []
         for n, s in enumerate(t):
-            col = s.find(&#34;^[A-Z]+&#34;) and NUM(n, s) or SYM(n, s)  # Add regular expression here
+            if re.match(r&#34;^[A-Z]+&#34;, s):
+                col = NUM(n, s)
+            else:
+                col = SYM(n, s)
             self.all.append(col)
-            if not s.find(&#34;X$&#34;): # Regular expression
-                if s.find(&#34;!$&#34;): self.klass = col # Regular expression
-                if s.find(&#34;[!+-]$&#34;) and self.y:
+            if not re.search(r&#34;X$&#34;, s):
+                if re.search(r&#34;!$&#34;, s):
+                    self.klass = col
+                if re.search(r&#34;[!+-]$&#34;, s):
                     self.y.append(col)
-                elif self.x:
+                else:
                     self.x.append(col)
 
     def add(self, row):
-        for _, t in enumerate({self.x, self.y}):
-            for _, col in enumerate(t):
-                col.append(row.cells[col.at])</code></pre>
+        for t in [self.x, self.y]:
+            for col in t:
+                col.add(row.cells[col.at])</code></pre>
 </details>
 </section>
 <section>
@@ -73,25 +104,25 @@ class COLS:
 </summary>
 <pre><code class="python">class COLS:
     def __init__(self, t):
-        self.names = t
-        self.all = []
-        self.x = []
-        self.y = []
-        self.klass = []  # Originally was dictionary
+        self.names, self.all, self.x, self.y, self.klass = t, [], [], [], []
         for n, s in enumerate(t):
-            col = s.find(&#34;^[A-Z]+&#34;) and NUM(n, s) or SYM(n, s)  # Add regular expression here
+            if re.match(r&#34;^[A-Z]+&#34;, s):
+                col = NUM(n, s)
+            else:
+                col = SYM(n, s)
             self.all.append(col)
-            if not s.find(&#34;X$&#34;): # Regular expression
-                if s.find(&#34;!$&#34;): self.klass = col # Regular expression
-                if s.find(&#34;[!+-]$&#34;) and self.y:
+            if not re.search(r&#34;X$&#34;, s):
+                if re.search(r&#34;!$&#34;, s):
+                    self.klass = col
+                if re.search(r&#34;[!+-]$&#34;, s):
                     self.y.append(col)
-                elif self.x:
+                else:
                     self.x.append(col)
 
     def add(self, row):
-        for _, t in enumerate({self.x, self.y}):
-            for _, col in enumerate(t):
-                col.append(row.cells[col.at])</code></pre>
+        for t in [self.x, self.y]:
+            for col in t:
+                col.add(row.cells[col.at])</code></pre>
 </details>
 <h3>Methods</h3>
 <dl>
@@ -105,9 +136,9 @@ class COLS:
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def add(self, row):
-    for _, t in enumerate({self.x, self.y}):
-        for _, col in enumerate(t):
-            col.append(row.cells[col.at])</code></pre>
+    for t in [self.x, self.y]:
+        for col in t:
+            col.add(row.cells[col.at])</code></pre>
 </details>
 </dd>
 </dl>

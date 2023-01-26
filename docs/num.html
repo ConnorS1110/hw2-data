@@ -41,6 +41,7 @@
         # print(&#34;Inside Add&#34;, n)
         if n != &#34;?&#34;: # Why Question mark
             self.n += 1
+            n = float(n)
             d = n - self.mu
             self.mu += d / self.n
             self.m2 += d * (n - self.mu)
@@ -89,6 +90,7 @@
         # print(&#34;Inside Add&#34;, n)
         if n != &#34;?&#34;: # Why Question mark
             self.n += 1
+            n = float(n)
             d = n - self.mu
             self.mu += d / self.n
             self.m2 += d * (n - self.mu)
@@ -117,6 +119,7 @@
     # print(&#34;Inside Add&#34;, n)
     if n != &#34;?&#34;: # Why Question mark
         self.n += 1
+        n = float(n)
         d = n - self.mu
         self.mu += d / self.n
         self.m2 += d * (n - self.mu)
