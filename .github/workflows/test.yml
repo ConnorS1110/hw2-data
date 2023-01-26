@@ -48,7 +48,6 @@ jobs:
         cp -r ${{ github.workspace }}/docs/* ${{ github.workspace }}
     - name: Commit to gh-pages
       run: |
-        git pull origin gh-pages
         git add .
         git commit -m "Update pages documentation"
     - name: Push to gh-pages
