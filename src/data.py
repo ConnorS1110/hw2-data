@@ -4,8 +4,7 @@ from cols import COLS
 
 def kap(t, fun):
     u ={}
-    print(type(t))
-    for v in t:
+    for v in t.items():
         v, k = fun(k, v)
         u[k or len(u) + 1] = v
     return u
