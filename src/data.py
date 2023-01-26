@@ -4,7 +4,8 @@ from cols import COLS
 
 def kap(t, fun):
     u ={}
-    for v in t.items():
+    print(type(t))
+    for v in t:
         v, k = fun(k, v)
         u[k or len(u) + 1] = v
     return u
@@ -32,9 +33,9 @@ class DATA:
         map(init or {}, data.add(x))
         return data
 
-    def stats(self, cols, nPlaces):
-        def fun(k, col):
-            mid = getattr(col, "mid")
-            rounded = round(mid(), nPlaces)
+    def stats(self, what, cols, nPlaces):
+        def fun(col):
+            mid = getattr(col, what or "mid")
+            rounded = round(float(mid()), nPlaces)
             return (rounded, col.txt)
         return kap(cols or self.cols.y, fun)

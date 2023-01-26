@@ -29,14 +29,7 @@
 <pre><code class="python">import testfile as test
 from row import ROW
 from cols import COLS
-
-def kap(t, fun):
-    u ={}
-    print(type(t))
-    for v in t:
-        v, k = fun(k, v)
-        u[k or len(u) + 1] = v
-    return u
+from misc import *
 
 class DATA:
     def __init__(self, src):
@@ -61,10 +54,10 @@ class DATA:
         map(init or {}, data.add(x))
         return data
 
-    def stats(self, cols, nPlaces):
-        def fun(k, col):
-            mid = getattr(col, &#34;mid&#34;)
-            rounded = round(mid(), nPlaces)
+    def stats(self, what, cols, nPlaces):
+        def fun(col):
+            mid = getattr(col, what or &#34;mid&#34;)
+            rounded = round(float(mid()), nPlaces)
             return (rounded, col.txt)
         return kap(cols or self.cols.y, fun)</code></pre>
 </details>
@@ -74,27 +67,6 @@ class DATA:
 <section>
 </section>
 <section>
-<h2 class="section-title" id="header-functions">Functions</h2>
-<dl>
-<dt id="src.data.kap"><code class="name flex">
-<span>def <span class="ident">kap</span></span>(<span>t, fun)</span>
-</code></dt>
-<dd>
-<div class="desc"></div>
-<details class="source">
-<summary>
-<span>Expand source code</span>
-</summary>
-<pre><code class="python">def kap(t, fun):
-    u ={}
-    print(type(t))
-    for v in t:
-        v, k = fun(k, v)
-        u[k or len(u) + 1] = v
-    return u</code></pre>
-</details>
-</dd>
-</dl>
 </section>
 <section>
 <h2 class="section-title" id="header-classes">Classes</h2>
@@ -132,10 +104,10 @@ class DATA:
         map(init or {}, data.add(x))
         return data
 
-    def stats(self, cols, nPlaces):
-        def fun(k, col):
-            mid = getattr(col, &#34;mid&#34;)
-            rounded = round(mid(), nPlaces)
+    def stats(self, what, cols, nPlaces):
+        def fun(col):
+            mid = getattr(col, what or &#34;mid&#34;)
+            rounded = round(float(mid()), nPlaces)
             return (rounded, col.txt)
         return kap(cols or self.cols.y, fun)</code></pre>
 </details>
@@ -175,7 +147,7 @@ class DATA:
 </details>
 </dd>
 <dt id="src.data.DATA.stats"><code class="name flex">
-<span>def <span class="ident">stats</span></span>(<span>self, cols, nPlaces)</span>
+<span>def <span class="ident">stats</span></span>(<span>self, what, cols, nPlaces)</span>
 </code></dt>
 <dd>
 <div class="desc"></div>
@@ -183,10 +155,10 @@ class DATA:
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def stats(self, cols, nPlaces):
-    def fun(k, col):
-        mid = getattr(col, &#34;mid&#34;)
-        rounded = round(mid(), nPlaces)
+<pre><code class="python">def stats(self, what, cols, nPlaces):
+    def fun(col):
+        mid = getattr(col, what or &#34;mid&#34;)
+        rounded = round(float(mid()), nPlaces)
         return (rounded, col.txt)
     return kap(cols or self.cols.y, fun)</code></pre>
 </details>
@@ -205,11 +177,6 @@ class DATA:
 <li><h3>Super-module</h3>
 <ul>
 <li><code><a title="src" href="index.html">src</a></code></li>
-</ul>
-</li>
-<li><h3><a href="#header-functions">Functions</a></h3>
-<ul class="">
-<li><code><a title="src.data.kap" href="#src.data.kap">kap</a></code></li>
 </ul>
 </li>
 <li><h3><a href="#header-classes">Classes</a></h3>
