@@ -112,3 +112,10 @@ def dataFunc():
     data.cols.x[1].at == 1 and
     len(data.cols.x) == 4
     )
+
+def statsFunc():
+    script_dir = os.path.dirname(__file__)
+    full_path = os.path.join(script_dir, args.file)
+    data = DATA(full_path)
+    for k, cols in zip(data.cols.y, data.cols.x):
+        print(data.stats(cols, 2))
