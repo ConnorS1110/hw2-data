@@ -120,7 +120,6 @@ def dataFunc():
     len(data.cols.x) == 4
     )
 
-
 def statsFunc():
     script_dir = os.path.dirname(__file__)
     full_path = os.path.join(script_dir, args.file)

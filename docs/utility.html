@@ -139,7 +139,14 @@ def dataFunc():
     data.cols.y[1].w == -1 and
     data.cols.x[1].at == 1 and
     len(data.cols.x) == 4
-    )</code></pre>
+    )
+
+def statsFunc():
+    script_dir = os.path.dirname(__file__)
+    full_path = os.path.join(script_dir, args.file)
+    data = DATA(full_path)
+    for k, cols in zip(data.cols.y, data.cols.x):
+        print(data.stats(cols, 2))</code></pre>
 </details>
 </section>
 <section>
@@ -343,6 +350,23 @@ def dataFunc():
             fun(line)</code></pre>
 </details>
 </dd>
+<dt id="src.utility.statsFunc"><code class="name flex">
+<span>def <span class="ident">statsFunc</span></span>(<span>)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def statsFunc():
+    script_dir = os.path.dirname(__file__)
+    full_path = os.path.join(script_dir, args.file)
+    data = DATA(full_path)
+    for k, cols in zip(data.cols.y, data.cols.x):
+        print(data.stats(cols, 2))</code></pre>
+</details>
+</dd>
 <dt id="src.utility.symFunc"><code class="name flex">
 <span>def <span class="ident">symFunc</span></span>(<span>)</span>
 </code></dt>
@@ -388,6 +412,7 @@ def dataFunc():
 <li><code><a title="src.utility.rand" href="#src.utility.rand">rand</a></code></li>
 <li><code><a title="src.utility.randFunc" href="#src.utility.randFunc">randFunc</a></code></li>
 <li><code><a title="src.utility.readCSV" href="#src.utility.readCSV">readCSV</a></code></li>
+<li><code><a title="src.utility.statsFunc" href="#src.utility.statsFunc">statsFunc</a></code></li>
 <li><code><a title="src.utility.symFunc" href="#src.utility.symFunc">symFunc</a></code></li>
 </ul>
 </li>
