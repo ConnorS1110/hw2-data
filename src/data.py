@@ -2,6 +2,13 @@ import testfile as test
 from row import ROW
 from cols import COLS
 
+def kap(listOfCols, fun): # t is 
+    u = {}
+    for k, v in enumerate(listOfCols):
+        v, k = fun(v)
+        u[k or len(u)+1] = v
+    return u
+
 class DATA:
     def __init__(self, src):
         self.rows = []
@@ -26,8 +33,8 @@ class DATA:
         return data
 
     def stats(self, what, cols, nPlaces):
-        def fun(k, col):
-            mid = getattr(col, "mid")
-            rounded = round(mid(), nPlaces)
+        def fun(col):
+            mid = getattr(col, what or "mid")
+            rounded = round(float(mid()), nPlaces)
             return (rounded, col.txt)
-        return test.kap(cols or self.cols.y, fun)
+        return kap(cols or self.cols.y, fun)

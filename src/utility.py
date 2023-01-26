@@ -32,6 +32,13 @@ def eg(key, string, fun):
 def oo():
     pass
 
+def kap(t, fun):
+    u = {}
+    for k, v in t.items():
+        v, k = fun(k, v)
+        u[k or len(u)+1] = v
+    return u
+
 def rand(low, high):
     global Seed
     low, high = low or 0, high or 1
@@ -112,3 +119,12 @@ def dataFunc():
     data.cols.x[1].at == 1 and
     len(data.cols.x) == 4
     )
+
+
+def statsFunc():
+    script_dir = os.path.dirname(__file__)
+    full_path = os.path.join(script_dir, args.file)
+    data = DATA(full_path)
+    for k, cols in {'y': data.cols.y, 'x': data.cols.x}.items():
+        print(k, "mid", (data.stats("mid", cols, 2)))
+        print("", "div", (data.stats("div", cols, 2)))
