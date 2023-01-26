@@ -60,6 +60,13 @@ def eg(key, string, fun):
 def oo():
     pass
 
+def kap(t, fun):
+    u = {}
+    for k, v in t.items():
+        v, k = fun(k, v)
+        u[k or len(u)+1] = v
+    return u
+
 def rand(low, high):
     global Seed
     low, high = low or 0, high or 1
@@ -145,8 +152,9 @@ def statsFunc():
     script_dir = os.path.dirname(__file__)
     full_path = os.path.join(script_dir, args.file)
     data = DATA(full_path)
-    for k, cols in zip(data.cols.y, data.cols.x):
-        print(data.stats(cols, 2))</code></pre>
+    for k, cols in {&#39;y&#39;: data.cols.y, &#39;x&#39;: data.cols.x}.items():
+        print(k, &#34;mid&#34;, (data.stats(&#34;mid&#34;, cols, 2)))
+        print(&#34;&#34;, &#34;div&#34;, (data.stats(&#34;div&#34;, cols, 2)))</code></pre>
 </details>
 </section>
 <section>
@@ -244,6 +252,23 @@ def statsFunc():
     parser.add_argument(&#34;-s&#34;, &#34;--seed&#34;, type=int, default=937162211, required=False, help=&#34;random number seed&#34;)
     parser.add_argument(&#34;-f&#34;, &#34;--file&#34;, type=str, default=&#34;../etc/data/auto93.csv&#34;, required=False, help=&#34;name of file&#34;)
     args = parser.parse_args()</code></pre>
+</details>
+</dd>
+<dt id="src.utility.kap"><code class="name flex">
+<span>def <span class="ident">kap</span></span>(<span>t, fun)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def kap(t, fun):
+    u = {}
+    for k, v in t.items():
+        v, k = fun(k, v)
+        u[k or len(u)+1] = v
+    return u</code></pre>
 </details>
 </dd>
 <dt id="src.utility.numFunc"><code class="name flex">
@@ -363,8 +388,9 @@ def statsFunc():
     script_dir = os.path.dirname(__file__)
     full_path = os.path.join(script_dir, args.file)
     data = DATA(full_path)
-    for k, cols in zip(data.cols.y, data.cols.x):
-        print(data.stats(cols, 2))</code></pre>
+    for k, cols in {&#39;y&#39;: data.cols.y, &#39;x&#39;: data.cols.x}.items():
+        print(k, &#34;mid&#34;, (data.stats(&#34;mid&#34;, cols, 2)))
+        print(&#34;&#34;, &#34;div&#34;, (data.stats(&#34;div&#34;, cols, 2)))</code></pre>
 </details>
 </dd>
 <dt id="src.utility.symFunc"><code class="name flex">
@@ -406,6 +432,7 @@ def statsFunc():
 <li><code><a title="src.utility.dataFunc" href="#src.utility.dataFunc">dataFunc</a></code></li>
 <li><code><a title="src.utility.eg" href="#src.utility.eg">eg</a></code></li>
 <li><code><a title="src.utility.getCliArgs" href="#src.utility.getCliArgs">getCliArgs</a></code></li>
+<li><code><a title="src.utility.kap" href="#src.utility.kap">kap</a></code></li>
 <li><code><a title="src.utility.numFunc" href="#src.utility.numFunc">numFunc</a></code></li>
 <li><code><a title="src.utility.oo" href="#src.utility.oo">oo</a></code></li>
 <li><code><a title="src.utility.printCLIvalues" href="#src.utility.printCLIvalues">printCLIvalues</a></code></li>

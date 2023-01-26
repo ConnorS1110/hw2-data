@@ -30,12 +30,11 @@
 from row import ROW
 from cols import COLS
 
-def kap(t, fun):
-    u ={}
-    print(type(t))
-    for v in t:
-        v, k = fun(k, v)
-        u[k or len(u) + 1] = v
+def kap(listOfCols, fun): # t is 
+    u = {}
+    for k, v in enumerate(listOfCols):
+        v, k = fun(v)
+        u[k or len(u)+1] = v
     return u
 
 class DATA:
@@ -61,10 +60,10 @@ class DATA:
         map(init or {}, data.add(x))
         return data
 
-    def stats(self, cols, nPlaces):
-        def fun(k, col):
-            mid = getattr(col, &#34;mid&#34;)
-            rounded = round(mid(), nPlaces)
+    def stats(self, what, cols, nPlaces):
+        def fun(col):
+            mid = getattr(col, what or &#34;mid&#34;)
+            rounded = round(float(mid()), nPlaces)
             return (rounded, col.txt)
         return kap(cols or self.cols.y, fun)</code></pre>
 </details>
@@ -77,7 +76,7 @@ class DATA:
 <h2 class="section-title" id="header-functions">Functions</h2>
 <dl>
 <dt id="src.data.kap"><code class="name flex">
-<span>def <span class="ident">kap</span></span>(<span>t, fun)</span>
+<span>def <span class="ident">kap</span></span>(<span>listOfCols, fun)</span>
 </code></dt>
 <dd>
 <div class="desc"></div>
@@ -85,12 +84,11 @@ class DATA:
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def kap(t, fun):
-    u ={}
-    print(type(t))
-    for v in t:
-        v, k = fun(k, v)
-        u[k or len(u) + 1] = v
+<pre><code class="python">def kap(listOfCols, fun): # t is 
+    u = {}
+    for k, v in enumerate(listOfCols):
+        v, k = fun(v)
+        u[k or len(u)+1] = v
     return u</code></pre>
 </details>
 </dd>
@@ -132,10 +130,10 @@ class DATA:
         map(init or {}, data.add(x))
         return data
 
-    def stats(self, cols, nPlaces):
-        def fun(k, col):
-            mid = getattr(col, &#34;mid&#34;)
-            rounded = round(mid(), nPlaces)
+    def stats(self, what, cols, nPlaces):
+        def fun(col):
+            mid = getattr(col, what or &#34;mid&#34;)
+            rounded = round(float(mid()), nPlaces)
             return (rounded, col.txt)
         return kap(cols or self.cols.y, fun)</code></pre>
 </details>
@@ -175,7 +173,7 @@ class DATA:
 </details>
 </dd>
 <dt id="src.data.DATA.stats"><code class="name flex">
-<span>def <span class="ident">stats</span></span>(<span>self, cols, nPlaces)</span>
+<span>def <span class="ident">stats</span></span>(<span>self, what, cols, nPlaces)</span>
 </code></dt>
 <dd>
 <div class="desc"></div>
@@ -183,10 +181,10 @@ class DATA:
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def stats(self, cols, nPlaces):
-    def fun(k, col):
-        mid = getattr(col, &#34;mid&#34;)
-        rounded = round(mid(), nPlaces)
+<pre><code class="python">def stats(self, what, cols, nPlaces):
+    def fun(col):
+        mid = getattr(col, what or &#34;mid&#34;)
+        rounded = round(float(mid()), nPlaces)
         return (rounded, col.txt)
     return kap(cols or self.cols.y, fun)</code></pre>
 </details>
