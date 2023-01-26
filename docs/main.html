@@ -26,16 +26,13 @@
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">import testfile as test
-from testfile import getCliArgs, printCLIvalues
+<pre><code class="python">from testfile import getCliArgs, printCLIvalues
 import utility
-
-the = {}
 
 # args = None
 # Seed = 937162211
 
-def main(the, funs):
+def main(funs):
     &#34;&#34;&#34;
     Function:
         main
@@ -52,9 +49,8 @@ def main(the, funs):
     if (utility.args.help):
         print(utility.help)
     else:
-        for what, fun in funs.items():
+        for what, _ in funs.items():
             if utility.args.go == &#34;all&#34; or what == utility.args.go:
-                Seed = utility.args.seed
                 if funs[what]() == False:
                     fails += 1
                     print(&#34;❌ fail:&#34;,what)
@@ -64,7 +60,7 @@ def main(the, funs):
     else: return 1
 
 if __name__ == &#34;__main__&#34;:
-    main(the, utility.egs)</code></pre>
+    main(utility.egs)</code></pre>
 </details>
 </section>
 <section>
@@ -75,7 +71,7 @@ if __name__ == &#34;__main__&#34;:
 <h2 class="section-title" id="header-functions">Functions</h2>
 <dl>
 <dt id="src.main.main"><code class="name flex">
-<span>def <span class="ident">main</span></span>(<span>the, funs)</span>
+<span>def <span class="ident">main</span></span>(<span>funs)</span>
 </code></dt>
 <dd>
 <div class="desc"><h2 id="function">Function</h2>
@@ -91,7 +87,7 @@ if __name__ == &#34;__main__&#34;:
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def main(the, funs):
+<pre><code class="python">def main(funs):
     &#34;&#34;&#34;
     Function:
         main
@@ -108,9 +104,8 @@ if __name__ == &#34;__main__&#34;:
     if (utility.args.help):
         print(utility.help)
     else:
-        for what, fun in funs.items():
+        for what, _ in funs.items():
             if utility.args.go == &#34;all&#34; or what == utility.args.go:
-                Seed = utility.args.seed
                 if funs[what]() == False:
                     fails += 1
                     print(&#34;❌ fail:&#34;,what)

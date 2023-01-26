@@ -48,6 +48,17 @@ class COLS:
                     self.x.append(col)
 
     def add(self, row):
+        &#34;&#34;&#34;
+        Function:
+            add
+        Description:
+            adds row data to columns
+        Input:
+            self - current COLS instance
+            row - row data to add for each column
+        Output:
+            None
+        &#34;&#34;&#34;
         for t in [self.x, self.y]:
             for col in t:
                 col.add(row.cells[col.at])</code></pre>
@@ -90,6 +101,17 @@ class COLS:
                     self.x.append(col)
 
     def add(self, row):
+        &#34;&#34;&#34;
+        Function:
+            add
+        Description:
+            adds row data to columns
+        Input:
+            self - current COLS instance
+            row - row data to add for each column
+        Output:
+            None
+        &#34;&#34;&#34;
         for t in [self.x, self.y]:
             for col in t:
                 col.add(row.cells[col.at])</code></pre>
@@ -100,12 +122,31 @@ class COLS:
 <span>def <span class="ident">add</span></span>(<span>self, row)</span>
 </code></dt>
 <dd>
-<div class="desc"></div>
+<div class="desc"><h2 id="function">Function</h2>
+<p>add</p>
+<h2 id="description">Description</h2>
+<p>adds row data to columns</p>
+<h2 id="input">Input</h2>
+<p>self - current COLS instance
+row - row data to add for each column</p>
+<h2 id="output">Output</h2>
+<p>None</p></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def add(self, row):
+    &#34;&#34;&#34;
+    Function:
+        add
+    Description:
+        adds row data to columns
+    Input:
+        self - current COLS instance
+        row - row data to add for each column
+    Output:
+        None
+    &#34;&#34;&#34;
     for t in [self.x, self.y]:
         for col in t:
             col.add(row.cells[col.at])</code></pre>
